@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 17:42:36 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 20:55:00 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/03 22:11:51 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,8 @@ int	main(int argc, char **argv)
 }
 
 /* to do:
-** [ ] error with duplicate instructions??
+** [ ] error with duplicate arguments
+** [ ] empty string ""
+** [ ] pa <> pb
+** [ ] change everything to linked list
 */
