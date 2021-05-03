@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstadd_front_bonus.c                            :+:    :+:            */
+/*   get_next_line.h                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/16 11:54:45 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 14:34:06 by iboeters      ########   odam.nl         */
+/*   Created: 2019/12/11 12:53:04 by iboeters      #+#    #+#                 */
+/*   Updated: 2021/05/03 14:36:44 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
+
+# define BUFFER_SIZE 32
+
+size_t	gnl_strlen(const char *s);
+char	*gnl_strjoin(char *s1, char *s2);
+int		gnl_strchr(const char *s, int c);
+void	*gnl_calloc(size_t count, size_t size);
+char	*gnl_substr(char *s, unsigned int start, size_t len);
+int		get_next_line(int fd, char **line);
+
+#endif

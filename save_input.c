@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_input.c                                      :+:    :+:            */
+/*   save_input.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 19:29:52 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/02 19:45:35 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/03 20:11:14 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,29 @@ int	atoi_check(const char *str, int *error)
 	return (atoi_ret(str[i], sign, r, error));
 }
 
-int	check_input(int argc, char **argv)
+void	print_lst_item(void *str)
+{
+	printf("%s\n", str);
+}
+
+void	save_instructions(t_list **input)
+{
+	int		ret;
+	char	*str;
+
+	ret = 1;
+	while (ret >= 1)
+	{
+		ret = get_next_line(0, &str);
+		if (ret != 1)
+			break ;
+		ft_lstadd_back(input, ft_lstnew(str));
+	}
+	printf("list content:\n");
+	ft_lstiter(*input, print_lst_item);
+}
+
+int	save_input(int argc, char **argv, t_stack *stack, t_list **input)
 {
 	int	error;
 	int	i;
@@ -60,14 +82,16 @@ int	check_input(int argc, char **argv)
 	i = 1;
 	while (error == 0 && argv[i])
 	{
-		printf("%i\n", atoi_check(argv[i], &error));
+		(*stack).arr[i - 1] = atoi_check(argv[i], &error);
 		i++;
 	}
 	if (error == 1)
 	{
-		printf("\033[31minvalid input\n\033[0m");
+		printf("\033[31mError: invalid input\033[0m\n");
 		return (1);
 	}
-	printf("\033[32mvalid input\n\033[0m");
+	(*stack).size = i - 1;
+	printf("\033[32mvalid input\033[0m\n");
+	save_instructions(input);
 	return (0);
 }
