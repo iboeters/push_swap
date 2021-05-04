@@ -6,13 +6,13 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 20:22:37 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 21:42:59 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/04 17:30:03 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_list *stack_a, t_list *stack_b)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ void	pa(t_stack *a, t_stack *b)
 	b->size++;
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	pb(t_list *stack_a, t_list *stack_b)
 {
 	int	i;
 	int	j;
@@ -56,7 +56,7 @@ void	pb(t_stack *a, t_stack *b)
 	b->size--;
 }
 
-void pushes(char *instruction, t_stack *a, t_stack *b)
+void pushes(char *instruction, t_list *stack_a, t_list *stack_b)
 {
 	if (instruction[1] == 'a' && a->size >= 1)
 		pa(a, b);

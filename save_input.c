@@ -6,15 +6,15 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 19:29:52 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 21:56:04 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/04 18:47:21 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	atoi_ret(char c, int sign, unsigned int r, int *error)
+int	atoi_ret(const char *str, int i, int sign, unsigned int r, int *error)
 {
-	if (c != '\0')
+	if (str[i] != '\0' || ft_strlen(str) == 0)
 	{
 		*error = 1;
 		return (-1);
@@ -48,12 +48,17 @@ int	atoi_check(const char *str, int *error)
 		}
 		i++;
 	}
-	return (atoi_ret(str[i], sign, r, error));
+	return (atoi_ret(str, i, sign, r, error));
 }
 
-void	print_lst_item(void *str)
+void	print_lst_str(void *str)
 {
-	printf("%s\n", str);
+	printf("%s\n", (char *)str);
+}
+
+void	print_lst_num(void *num)
+{
+	printf("%i\n", *((int *)num));
 }
 
 void	save_instructions(t_list **input)
@@ -70,19 +75,38 @@ void	save_instructions(t_list **input)
 		ft_lstadd_back(input, ft_lstnew(str));
 	}
 	printf("list content:\n");
-	ft_lstiter(*input, print_lst_item);
+	ft_lstiter(*input, print_lst_str);
 }
 
-int	save_input(int argc, char **argv, t_stack *stack, t_list **input)
+int	save_input(int argc, char **argv, t_list **stack_a, t_list **input)
 {
 	int	error;
+	t_list	*tmp_addr;
 	int	i;
+	int *num;
 
 	error = 0;
 	i = 1;
 	while (error == 0 && argv[i])
 	{
-		(*stack).arr[i - 1] = atoi_check(argv[i], &error);
+		num = (int *)malloc(sizeof(int) * 1);
+		*num = atoi_check(argv[i], &error);
+		ft_lstadd_back(stack_a, ft_lstnew(num));
+		tmp_addr = *stack_a;
+		while (*stack_a)
+		{
+			if ((*stack_a)->next != NULL)
+			{
+				if (*(int *)((*stack_a)->content) ==
+				*(int *)(((*stack_a)->next)->content))
+				{
+					printf("\033[31mError: duplicate arguments\033[0m\n");
+					return (1);
+				}
+			}
+			*stack_a = (*stack_a)->next;
+		}
+		*stack_a = tmp_addr;
 		i++;
 	}
 	if (error == 1)
@@ -90,7 +114,6 @@ int	save_input(int argc, char **argv, t_stack *stack, t_list **input)
 		printf("\033[31mError: invalid input\033[0m\n");
 		return (1);
 	}
-	(*stack).size = i - 1;
 	printf("\033[32mvalid input\033[0m\n");
 	save_instructions(input);
 	return (0);

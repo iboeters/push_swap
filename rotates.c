@@ -6,13 +6,13 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 20:22:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 21:15:45 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/04 17:29:41 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ra(t_stack *a)
+void	ra(t_list *stack_a)
 {
 	int tmp;
 	int	i;
@@ -27,7 +27,7 @@ void	ra(t_stack *a)
 	a->arr[i] = tmp;
 }
 
-void	rb(t_stack *b)
+void	rb(t_list *stack_b)
 {
 	int tmp;
 	int	i;
@@ -42,7 +42,7 @@ void	rb(t_stack *b)
 	b->arr[i] = tmp;
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rr(t_list *stack_a, t_list *stack_b)
 {
 	if (a->size >= 2)
 		ra(a);
@@ -50,7 +50,7 @@ void	rr(t_stack *a, t_stack *b)
 		rb(b);
 }
 
-void	rra(t_stack *a)
+void	rra(t_list *stack_a)
 {
 	int tmp;
 	int i;
@@ -65,7 +65,7 @@ void	rra(t_stack *a)
 	a->arr[i] = tmp;
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_list *stack_b)
 {
 	int tmp;
 	int i;
@@ -80,7 +80,7 @@ void	rrb(t_stack *b)
 	b->arr[i] = tmp;
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_list *stack_a, t_list *stack_b)
 {
 	if (a->size >= 2)
 		rra(a);
@@ -88,7 +88,7 @@ void	rrr(t_stack *a, t_stack *b)
 		rrb(b);
 }
 
-void rotates(char *instruction, t_stack *a, t_stack *b)
+void rotates(char *instruction, t_list *stack_a, t_list *stack_b)
 {
 	if (instruction[1] == 'a' && a->size >= 2)
 		ra(a);

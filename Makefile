@@ -6,7 +6,7 @@
 #    By: iboeters <iboeters@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/05/02 19:43:17 by iboeters      #+#    #+#                  #
-#    Updated: 2021/05/03 20:33:40 by iboeters      ########   odam.nl          #
+#    Updated: 2021/05/04 18:03:17 by iboeters      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@ NAME2 = checker
 
 SRC1 =	main.c
 
-SRC2 =	checker.c\
-		save_input.c\
-		instructions.c\
-		./get_next_line/get_next_line.c\
+SRC2 =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\
-		pushes.c\
-		swaps.c\
-		rotates.c
+		checker.c\
+		save_input.c
+		# instructions.c\
+		# pushes.c\
+		# swaps.c\
+		# rotates.c
 
 OBJ1 = $(SRC1:.c=.o)
 
@@ -33,16 +33,22 @@ INC1 = -I ./libft/libft.h
 
 INC2 = -I ./libft/libft.h -I ./get_next_line/get_next_line.h
 
+FLAGS = -Wall -Wextra -Werror
+
+ifdef DEBUG
+FLAGS += -fsanitize=address -fno-omit-frame-pointer -g
+endif
+
 all: $(NAME1) $(NAME2)
 
 $(NAME1): $(OBJ1)
 	@make -C ./libft
 	@make bonus -C ./libft
 	@cp ./libft/libft.a .
-	gcc -Wall -Wextra -Werror $(INC1) ${OBJ1} libft.a -o ${NAME1}
+	gcc $(FLAGS) $(INC1) ${OBJ1} libft.a -o ${NAME1}
 
 $(NAME2): $(OBJ2)
-	gcc -Wall -Wextra -Werror $(INC2) ${OBJ2} libft.a -o ${NAME2}
+	gcc $(FLAGS) $(INC2) ${OBJ2} libft.a -o ${NAME2}
 
 clean:
 	@make clean -C ./libft

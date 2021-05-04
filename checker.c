@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 17:42:36 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 22:11:51 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/04 18:49:25 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,31 +42,30 @@ void	free_stacks(t_stack a, t_stack b)
 
 int	main(int argc, char **argv)
 {
-	t_stack	a;
-	t_stack	b;
 	t_list	*input;
+	t_list	*stack_a;
+	t_list	*stack_b;
 
 	if (argc <= 1)
 		return (1);
-	a.arr = (int *)malloc((argc - 1) * sizeof(int));
-	b.arr = (int *)malloc((argc - 1) * sizeof(int));
-	b.size = 0;
-	if (save_input(argc, argv, &a, &input) == 1)
+	if (save_input(argc, argv, &stack_a, &input) == 1)
 		return (1);
-	instructions(&input, &a, &b);
+	printf("stack_a:\n");
+	ft_lstiter(stack_a, print_lst_num);
+	// instructions(&input, &stack_a, &stack_b);
 	printf("\n");
-	print_stack(a, 'a');
-	printf("\n");
-	print_stack(b, 'b');
+	// print_stack(a, 'a');
+	// printf("\n");
+	// print_stack(b, 'b');
 	ft_lstclear(&input, free);
-	free_stacks(a, b);
+	ft_lstclear(&stack_a, free);
 	// while (1){} //check leaks
 	return (0);
 }
 
 /* to do:
-** [ ] error with duplicate arguments
-** [ ] empty string ""
-** [ ] pa <> pb
+** [V] error with duplicate arguments
+** [V] empty string ""
 ** [ ] change everything to linked list
+** [ ] pa <> pb
 */
