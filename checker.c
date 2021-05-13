@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 17:42:36 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/04 18:49:25 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/13 17:23:52 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	print_stack(t_stack stack, char name)
 
 	i = 0;
 	printf("%c\n-\n", name);
+	printf("jaja\n");
 	while (i < stack.size)
 	{
 		printf("%i\n", stack.arr[i]);
