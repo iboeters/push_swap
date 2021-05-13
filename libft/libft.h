@@ -6,7 +6,7 @@
 /*   By: iboeters <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 15:19:47 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 14:32:28 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/13 17:39:51 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct		s_list
 {

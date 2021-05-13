@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 19:29:52 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/04 18:47:21 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/13 18:07:20 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	save_instructions(t_list **input)
 			break ;
 		ft_lstadd_back(input, ft_lstnew(str));
 	}
-	printf("list content:\n");
+	printf("input:\n");
 	ft_lstiter(*input, print_lst_str);
 }
 
@@ -82,6 +82,7 @@ int	save_input(int argc, char **argv, t_list **stack_a, t_list **input)
 {
 	int	error;
 	t_list	*tmp_addr;
+	t_list	*neww;
 	int	i;
 	int *num;
 
@@ -95,14 +96,12 @@ int	save_input(int argc, char **argv, t_list **stack_a, t_list **input)
 		tmp_addr = *stack_a;
 		while (*stack_a)
 		{
-			if ((*stack_a)->next != NULL)
+			if ((*stack_a)->next == NULL)
+				break ;	
+			if (*(int *)(*stack_a)->content == *num)
 			{
-				if (*(int *)((*stack_a)->content) ==
-				*(int *)(((*stack_a)->next)->content))
-				{
-					printf("\033[31mError: duplicate arguments\033[0m\n");
-					return (1);
-				}
+				printf("\033[31mError: duplicate arguments|%i|\033[0m\n", *num);
+				return (1);
 			}
 			*stack_a = (*stack_a)->next;
 		}

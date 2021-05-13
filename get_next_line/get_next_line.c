@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 16:17:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 14:38:47 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/13 17:28:06 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int		join_and_save(char **line, char **buf)
 
 int				get_next_line(int fd, char **line)
 {
-	static char				*buf[OPEN_MAX];
+	static char				*buf[4021];
 	int						ret;
 	int						malloc_check;
 
