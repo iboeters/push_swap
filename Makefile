@@ -6,7 +6,7 @@
 #    By: iboeters <iboeters@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/05/02 19:43:17 by iboeters      #+#    #+#                  #
-#    Updated: 2021/05/16 22:01:56 by iboeters      ########   odam.nl          #
+#    Updated: 2021/05/16 23:17:09 by iboeters      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,16 @@ NAME1 = push_swap
 
 NAME2 = checker
 
-SRC1 =	main.c
+SRC1 =	./push_swap_files/main.c
 
 SRC2 =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\
-		checker.c\
-		save_input.c\
-		instructions.c\
-		swaps.c\
-		pushes.c\
-		rotates.c
+		./checker_files/checker.c\
+		./checker_files/save_input.c\
+		./checker_files/instructions.c\
+		./checker_files/swaps.c\
+		./checker_files/pushes.c\
+		./checker_files/rotates.c
 
 OBJ1 = $(SRC1:.c=.o)
 
