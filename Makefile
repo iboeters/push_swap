@@ -6,7 +6,7 @@
 #    By: iboeters <iboeters@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/05/02 19:43:17 by iboeters      #+#    #+#                  #
-#    Updated: 2021/05/13 17:29:44 by iboeters      ########   odam.nl          #
+#    Updated: 2021/05/16 22:01:56 by iboeters      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,11 @@ SRC1 =	main.c
 SRC2 =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\
 		checker.c\
-		save_input.c
-		# instructions.c\
-		# pushes.c\
-		# swaps.c\
-		# rotates.c
+		save_input.c\
+		instructions.c\
+		swaps.c\
+		pushes.c\
+		rotates.c
 
 OBJ1 = $(SRC1:.c=.o)
 

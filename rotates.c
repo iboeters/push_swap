@@ -6,100 +6,71 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 20:22:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/04 17:29:41 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/16 22:52:39 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ra(t_list *stack_a)
+void	rotate(t_list **stack)
 {
-	int tmp;
-	int	i;
+	t_list	*tmp_addr;
+
+	tmp_addr = *stack;
+	*stack = (*stack)->next;
+	tmp_addr->next = NULL;
+	ft_lstadd_back(stack, tmp_addr);
+}
+
+void	rr(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_lstsize(*stack_a) >= 2)
+		rotate(stack_a);
+	if (ft_lstsize(*stack_b) >= 2)
+		rotate(stack_b);
+}
+
+void	reverse_rotate(t_list **stack)
+{
+	int		len;
+	int		i;
+	t_list	*first;
+	t_list	*last;
 
 	i = 0;
-	tmp = a->arr[0];
-	while (i < a->size - 1)
+	first = *stack;
+	last = ft_lstlast(*stack);
+	len = ft_lstsize(*stack);
+	while (i < len - 2 && *stack)
 	{
-		a->arr[i] = a->arr[i + 1];
+		*stack = (*stack)->next;
 		i++;
 	}
-	a->arr[i] = tmp;
+	(*stack)->next = NULL;
+	*stack = last;
+	(*stack)->next = first;
 }
 
-void	rb(t_list *stack_b)
+void	rrr(t_list **stack_a, t_list **stack_b)
 {
-	int tmp;
-	int	i;
-
-	i = 0;
-	tmp = b->arr[0];
-	while (i < b->size - 1)
-	{
-		b->arr[i] = b->arr[i + 1];
-		i++;
-	}
-	b->arr[i] = tmp;
+	if (ft_lstsize(*stack_a) >= 2)
+		reverse_rotate(stack_a);
+	if (ft_lstsize(*stack_b) >= 2)
+		reverse_rotate(stack_b);
 }
 
-void	rr(t_list *stack_a, t_list *stack_b)
+void	rotates(char *instruction, t_list **stack_a, t_list **stack_b)
 {
-	if (a->size >= 2)
-		ra(a);
-	if (b->size >= 2)
-		rb(b);
-}
-
-void	rra(t_list *stack_a)
-{
-	int tmp;
-	int i;
-
-	i = a->size - 1;
-	tmp = a->arr[i];
-	while (i > 0)
-	{
-		a->arr[i] = a->arr[i - 1];
-		i--;
-	}
-	a->arr[i] = tmp;
-}
-
-void	rrb(t_list *stack_b)
-{
-	int tmp;
-	int i;
-
-	i = b->size - 1;
-	tmp = b->arr[i];
-	while (i > 0)
-	{
-		b->arr[i] = b->arr[i - 1];
-		i--;
-	}
-	b->arr[i] = tmp;
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	if (a->size >= 2)
-		rra(a);
-	if (b->size >= 2)
-		rrb(b);
-}
-
-void rotates(char *instruction, t_list *stack_a, t_list *stack_b)
-{
-	if (instruction[1] == 'a' && a->size >= 2)
-		ra(a);
-	else if (instruction[1] == 'b' && b->size >= 2)
-		rb(b);
+	if (instruction[1] == 'a' && ft_lstsize(*stack_a) >= 2)
+		rotate(stack_a);
+	else if (instruction[1] == 'b' && ft_lstsize(*stack_b) >= 2)
+		rotate(stack_b);
 	else if (instruction[1] == 'r' && instruction[1] == '\0')
-		rr(a, b);
-	else if (instruction[2] == 'a' && a->size >= 2)
-		rra(a);
-	else if (instruction[2] == 'b' && b->size >= 2)
-		rrb(b);
+		rr(stack_a, stack_b);
+	else if (instruction[2] == 'a' && ft_lstsize(*stack_a) >= 2)
+		reverse_rotate(stack_a);
+	else if (instruction[2] == 'b' && ft_lstsize(*stack_b) >= 2)
+		reverse_rotate(stack_b);
 	else
-		rrr(a, b);
+		rrr(stack_a, stack_b);
 }

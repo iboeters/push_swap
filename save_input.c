@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 19:29:52 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/13 18:07:20 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/16 23:08:00 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	atoi_check(const char *str, int *error)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		r = r * 10 + str[i] - '0';
-		if ((sign == 1 && r > (unsigned)INT_MAX)
-			|| (sign == -1 && r > (unsigned)INT_MAX + 1))
+		if ((sign == 1 && (sign * r) > (unsigned)INT_MAX)
+			|| (sign == -1 && (sign * r) < (unsigned)INT_MIN))
 		{
 			*error = 1;
 			return (-1);
@@ -74,8 +74,8 @@ void	save_instructions(t_list **input)
 			break ;
 		ft_lstadd_back(input, ft_lstnew(str));
 	}
-	printf("input:\n");
-	ft_lstiter(*input, print_lst_str);
+	// printf("input:\n");
+	// ft_lstiter(*input, print_lst_str);
 }
 
 int	save_input(int argc, char **argv, t_list **stack_a, t_list **input)
@@ -94,10 +94,8 @@ int	save_input(int argc, char **argv, t_list **stack_a, t_list **input)
 		*num = atoi_check(argv[i], &error);
 		ft_lstadd_back(stack_a, ft_lstnew(num));
 		tmp_addr = *stack_a;
-		while (*stack_a)
+		while ((*stack_a)->next != NULL)
 		{
-			if ((*stack_a)->next == NULL)
-				break ;	
 			if (*(int *)(*stack_a)->content == *num)
 			{
 				printf("\033[31mError: duplicate arguments|%i|\033[0m\n", *num);

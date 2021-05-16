@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 12:37:40 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/04 17:55:50 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/16 23:08:21 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,22 @@ int	valid_instructions(t_list *input)
 	return (0);
 }
 
-int	instructions(t_list *input, t_list *stack_a, t_list *stack_b)
+int	instructions(t_list **input, t_list **stack_a, t_list **stack_b)
 {
-	if (valid_instructions(input) == -1)
+	if (valid_instructions(*input) == -1)
 	{
 		printf("\033[31mError: invalid instruction(s)\033[0m\n");
 		return (-1);
 	}
-	while (input)
+	while (*input)
 	{
-		if (*((char *)((input)->content)) == 's')
+		if (*((char *)((*input)->content)) == 's')
 			swaps((*input)->content, stack_a, stack_b);
-		else if (*((char *)((input)->content)) == 'p')
+		else if (*((char *)((*input)->content)) == 'p')
 			pushes((*input)->content, stack_a, stack_b);
-		else if (*((char *)((input)->content)) == 'r')
+		else if (*((char *)((*input)->content)) == 'r')
 			rotates((*input)->content, stack_a, stack_b);
-		input = (input)->next;
+		*input = (*input)->next;
 	}
 	return (0);
 }

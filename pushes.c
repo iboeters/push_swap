@@ -6,60 +6,34 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 20:22:37 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/04 17:30:03 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/16 23:12:53 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	pa(t_list *stack_a, t_list *stack_b)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
-	int	i;
-	int	j;
+	t_list	*tmp_addr;
 
-	i = 1;
-	j = 0;
-	while (i < b->size + 1)
-	{
-		b->arr[i] = b->arr[i - 1];
-		i++;
-	}
-	b->arr[0] = a->arr[0];
-	while (j < a->size)
-	{
-		a->arr[j] = a->arr[j + 1];
-		j++;
-	}
-	a->size--;
-	b->size++;
+	tmp_addr = (*stack_b)->next;
+	ft_lstadd_front(stack_a, *stack_b);
+	*stack_b = tmp_addr;
 }
 
-void	pb(t_list *stack_a, t_list *stack_b)
+void	pb(t_list **stack_a, t_list **stack_b)
 {
-	int	i;
-	int	j;
+	t_list	*tmp_addr;
 
-	i = 1;
-	j = 0;
-	while (i < a->size + 1)
-	{
-		a->arr[i] = a->arr[i - 1];
-		i++;
-	}
-	a->arr[0] = b->arr[0];
-	while (j < b->size)
-	{
-		b->arr[j] = b->arr[j + 1];
-		j++;
-	}
-	a->size++;
-	b->size--;
+	tmp_addr = (*stack_a)->next;
+	ft_lstadd_front(stack_b, *stack_a);
+	*stack_a = tmp_addr;
 }
 
-void pushes(char *instruction, t_list *stack_a, t_list *stack_b)
+void	pushes(char *instruction, t_list **stack_a, t_list **stack_b)
 {
-	if (instruction[1] == 'a' && a->size >= 1)
-		pa(a, b);
-	else if (instruction[1] == 'b' && b->size >= 1)
-		pb(a, b);
+	if (instruction[1] == 'a' && ft_lstsize(*stack_b) >= 1)
+		pa(stack_a, stack_b);
+	else if (instruction[1] == 'b' && ft_lstsize(*stack_a) >= 1)
+		pb(stack_a, stack_b);
 }
