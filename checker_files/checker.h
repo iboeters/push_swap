@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/02 18:59:30 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/16 23:17:42 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/17 13:40:23 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,25 @@
 # include <limits.h>
 # include <stdlib.h>
 
-int		save_input(int argc, char **argv, t_list **stack_a, t_list **input);
-void	rotates(char *instruction, t_list **stack_a, t_list **stack_b);
-void	swaps(char *instruction, t_list **stack_a, t_list **stack_b);
-void	pushes(char *instruction, t_list **stack_a, t_list **stack_b);
-int		instructions(t_list **input, t_list **stack_a, t_list **stack_b);
+typedef struct s_lst
+{
+	void			*content;
+	struct s_lst	*next;
+	struct s_lst	*prev;
+}					t_lst;
+
+int		save_input(int argc, char **argv, t_lst **stack_a, t_lst **input);
+void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b);
+void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b);
+void	pushes(char *instruction, t_lst **stack_a, t_lst **stack_b);
+int		instructions(t_lst **input, t_lst **stack_a, t_lst **stack_b);
 void	print_lst_num(void *num);
+void	lstadd_back(t_lst **lst, t_lst *new);
+void	lstadd_front(t_lst **lst, t_lst *new);
+void	lstclear(t_lst **lst, void (*del)(void*));
+void	lstiter(t_lst *lst, void (*f)(void *));
+t_lst	*lstlast(t_lst *lst);
+t_lst	*lstnew(void *content);
+int		lstsize(t_lst *lst);
 
 #endif

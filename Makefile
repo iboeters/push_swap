@@ -6,7 +6,7 @@
 #    By: iboeters <iboeters@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/05/02 19:43:17 by iboeters      #+#    #+#                  #
-#    Updated: 2021/05/16 23:17:09 by iboeters      ########   odam.nl          #
+#    Updated: 2021/05/17 13:33:51 by iboeters      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC2 =	./get_next_line/get_next_line.c\
 		./checker_files/instructions.c\
 		./checker_files/swaps.c\
 		./checker_files/pushes.c\
-		./checker_files/rotates.c
+		./checker_files/rotates.c\
+		./checker_files/lst_funs.c
 
 OBJ1 = $(SRC1:.c=.o)
 

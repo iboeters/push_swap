@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 19:29:52 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/16 23:08:00 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/17 14:47:43 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,28 +61,32 @@ void	print_lst_num(void *num)
 	printf("%i\n", *((int *)num));
 }
 
-void	save_instructions(t_list **input)
+void	save_instructions(t_lst **input)
 {
 	int		ret;
-	char	*str;
 
 	ret = 1;
 	while (ret >= 1)
 	{
+		char	*str;
 		ret = get_next_line(0, &str);
 		if (ret != 1)
+		{
+			if (str)
+				free(str);
 			break ;
-		ft_lstadd_back(input, ft_lstnew(str));
+		}
+		lstadd_back(input, lstnew(str));
 	}
-	// printf("input:\n");
-	// ft_lstiter(*input, print_lst_str);
+	printf("input:\n");
+	lstiter(*input, print_lst_str);
 }
 
-int	save_input(int argc, char **argv, t_list **stack_a, t_list **input)
+int	save_input(int argc, char **argv, t_lst **stack_a, t_lst **input)
 {
 	int	error;
-	t_list	*tmp_addr;
-	t_list	*neww;
+	t_lst	*tmp_addr;
+	t_lst	*last;
 	int	i;
 	int *num;
 
@@ -92,18 +96,19 @@ int	save_input(int argc, char **argv, t_list **stack_a, t_list **input)
 	{
 		num = (int *)malloc(sizeof(int) * 1);
 		*num = atoi_check(argv[i], &error);
-		ft_lstadd_back(stack_a, ft_lstnew(num));
-		tmp_addr = *stack_a;
-		while ((*stack_a)->next != NULL)
+		lstadd_back(stack_a, lstnew(num));
+		last = lstlast(*stack_a);
+		tmp_addr = last;
+		last = last->prev;
+		while (last != tmp_addr)
 		{
-			if (*(int *)(*stack_a)->content == *num)
+			if (*(int *)last->content == *num)
 			{
-				printf("\033[31mError: duplicate arguments|%i|\033[0m\n", *num);
+				printf("\033[31mError: duplicate arguments number:|%i|\033[0m\n", *num);
 				return (1);
 			}
-			*stack_a = (*stack_a)->next;
+			last = last->prev;
 		}
-		*stack_a = tmp_addr;
 		i++;
 	}
 	if (error == 1)

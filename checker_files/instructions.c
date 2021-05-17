@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 12:37:40 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/16 23:08:21 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/17 13:33:18 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_strcmp(const char *str, const char *str2)
 	return (1);
 }
 
-int	valid_instructions(t_list *input)
+int	valid_instructions(t_lst *input)
 {
 	while (input)
 	{
@@ -48,7 +48,7 @@ int	valid_instructions(t_list *input)
 	return (0);
 }
 
-int	instructions(t_list **input, t_list **stack_a, t_list **stack_b)
+int	instructions(t_lst **input, t_lst **stack_a, t_lst **stack_b)
 {
 	if (valid_instructions(*input) == -1)
 	{
