@@ -6,23 +6,23 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 20:22:37 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/17 16:40:27 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/18 21:01:00 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 void	push(t_lst **stack_1, t_lst **stack_2)
 {
 	t_lst	*last;
 	t_lst	*tmp_addr;
 
-	last = (*stack_2)->prev; //itself
-	tmp_addr = (*stack_2)->next; //NULL; but is it?? :addfront
-	lstadd_front(stack_1, *stack_2); //should go okay
-	*stack_2 = tmp_addr; //NULL
+	last = (*stack_2)->prev;
+	tmp_addr = (*stack_2)->next;
+	lstadd_front(stack_1, *stack_2);
+	*stack_2 = tmp_addr;
 	if (tmp_addr != NULL)
-		(*stack_2)->prev = last; //itself
+		(*stack_2)->prev = last;
 }
 
 void	pushes(char *instruction, t_lst **stack_a, t_lst **stack_b)

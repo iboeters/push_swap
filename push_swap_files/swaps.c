@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 20:20:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/17 16:38:53 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/18 21:01:08 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 void	swap(t_lst **stack)
 {

@@ -6,11 +6,24 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 17:42:36 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/17 16:29:25 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/18 11:58:59 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+int	ret_and_free(t_lst **stack_a, t_lst **stack_b, t_lst **input)
+{
+	lstclear(input, free);
+	lstclear(stack_a, free);
+	lstclear(stack_b, free);
+	return (1);
+}
+
+void	print_lst_num(void *num)
+{
+	printf("%i\n", *((int *)num));
+}
 
 void	check_sorted(t_lst *stack_a, t_lst *stack_b)
 {
@@ -38,22 +51,31 @@ void	check_sorted(t_lst *stack_a, t_lst *stack_b)
 
 int	main(int argc, char **argv)
 {
-	t_lst	*input;
 	t_lst	*stack_a;
 	t_lst	*stack_b;
+	t_lst	*input;
 
-	input = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
+	input = NULL;
 	if (argc <= 1)
 		return (1);
-	if (save_input(argc, argv, &stack_a, &input) == 1)
-		return (1);
-	instructions(&input, &stack_a, &stack_b);
-	printf("stack_a:\n");
-	lstiter(stack_a, print_lst_num);
-	printf("stack_b:\n");
-	lstiter(stack_b, print_lst_num);
+	if (save_input(argc, argv, &stack_a) == 1)
+		return (ret_and_free(&stack_a, &stack_b, &input));
+	if (save_instructions(&input) == 1)
+		return (ret_and_free(&stack_a, &stack_b, &input));
+	if (instructions(&input, &stack_a, &stack_b) == 1)
+		return (ret_and_free(&stack_a, &stack_b, &input));
+	if (stack_a)
+	{
+		printf("stack_a:\n");
+		lstiter(stack_a, print_lst_num);
+	}
+	if (stack_b)
+	{
+		printf("stack_b:\n");
+		lstiter(stack_b, print_lst_num);
+	}
 	printf("---backwards---\n");
 	if (stack_a)
 	{

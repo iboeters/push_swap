@@ -6,7 +6,7 @@
 #    By: iboeters <iboeters@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/05/02 19:43:17 by iboeters      #+#    #+#                  #
-#    Updated: 2021/05/17 13:33:51 by iboeters      ########   odam.nl          #
+#    Updated: 2021/05/18 21:13:03 by iboeters      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,25 +14,34 @@ NAME1 = push_swap
 
 NAME2 = checker
 
-SRC1 =	./push_swap_files/main.c
+SRC1 =	./get_next_line/get_next_line.c\
+		./get_next_line/get_next_line_utils.c\
+		./push_swap_files/save_input.c\
+		./push_swap_files/lst_funs.c\
+		./push_swap_files/pushes.c\
+		./push_swap_files/rotates.c\
+		./push_swap_files/swaps.c\
+		./push_swap_files/main.c\
+		./push_swap_files/algo_1.c
 
 SRC2 =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\
-		./checker_files/checker.c\
-		./checker_files/save_input.c\
+		./push_swap_files/swaps.c\
+		./push_swap_files/pushes.c\
+		./push_swap_files/rotates.c\
+		./push_swap_files/lst_funs.c\
+		./push_swap_files/save_input.c\
 		./checker_files/instructions.c\
-		./checker_files/swaps.c\
-		./checker_files/pushes.c\
-		./checker_files/rotates.c\
-		./checker_files/lst_funs.c
+		./checker_files/checker.c\
+		./checker_files/save_instructions.c
 
 OBJ1 = $(SRC1:.c=.o)
 
 OBJ2 = $(SRC2:.c=.o)
 
-INC1 = -I ./libft/libft.h
+INC1 = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h 
 
-INC2 = -I ./libft/libft.h -I ./get_next_line/get_next_line.h
+INC2 = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h
 
 FLAGS = -Wall -Wextra -Werror
 

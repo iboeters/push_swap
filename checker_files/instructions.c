@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 12:37:40 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/17 13:33:18 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/18 11:55:46 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int	valid_instructions(t_lst *input)
 			|| ft_strcmp(input->content, "rrr") == 0)
 			input = input->next;
 		else
-			return (-1);
+			return (1);
 	}
 	return (0);
 }
 
 int	instructions(t_lst **input, t_lst **stack_a, t_lst **stack_b)
 {
-	if (valid_instructions(*input) == -1)
+	if (valid_instructions(*input) == 1)
 	{
 		printf("\033[31mError: invalid instruction(s)\033[0m\n");
-		return (-1);
+		return (1);
 	}
 	while (*input)
 	{

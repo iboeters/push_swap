@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/02 18:59:30 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/17 13:40:23 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/18 21:02:21 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
+# include "../checker_files/checker.h"
 # include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
@@ -26,7 +27,7 @@ typedef struct s_lst
 	struct s_lst	*prev;
 }					t_lst;
 
-int		save_input(int argc, char **argv, t_lst **stack_a, t_lst **input);
+int		save_input(int argc, char **argv, t_lst **stack_a);
 void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b);
 void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b);
 void	pushes(char *instruction, t_lst **stack_a, t_lst **stack_b);
@@ -39,5 +40,6 @@ void	lstiter(t_lst *lst, void (*f)(void *));
 t_lst	*lstlast(t_lst *lst);
 t_lst	*lstnew(void *content);
 int		lstsize(t_lst *lst);
+int		save_instructions(t_lst **input);
 
 #endif

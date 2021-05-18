@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 20:22:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/17 15:08:28 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/05/18 21:00:56 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 void	rotate(t_lst **stack)
 {
