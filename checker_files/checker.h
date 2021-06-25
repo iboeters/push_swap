@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/02 18:59:30 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/18 21:02:21 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/24 14:08:30 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef struct s_lst
 }					t_lst;
 
 int		save_input(int argc, char **argv, t_lst **stack_a);
-void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b);
-void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b);
-void	pushes(char *instruction, t_lst **stack_a, t_lst **stack_b);
+void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
+void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
+void	pushes(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
 int		instructions(t_lst **input, t_lst **stack_a, t_lst **stack_b);
 void	print_lst_num(void *num);
 void	lstadd_back(t_lst **lst, t_lst *new);

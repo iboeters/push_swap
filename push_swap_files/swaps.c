@@ -6,19 +6,21 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 20:20:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/18 21:01:08 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/24 14:05:24 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_lst **stack)
+void	swap(t_lst **stack, char ab, int print)
 {
 	t_lst	*prev_1;
 	t_lst	*prev_2;
 	t_lst	*next_1;
 	t_lst	*next_2;
 
+	if (print)
+		printf("s%c\n", ab);
 	prev_1 = (*stack)->prev;
 	prev_2 = *stack;
 	next_1 = (*stack)->next;
@@ -34,20 +36,20 @@ void	swap(t_lst **stack)
 	}
 }
 
-void	ss(t_lst **stack_a, t_lst **stack_b)
+void	ss(t_lst **stack_a, t_lst **stack_b, int print)
 {
 	if (lstsize(*stack_a) >= 2)
-		swap(stack_a);
+		swap(stack_a, 'a', print);
 	if (lstsize(*stack_b) >= 2)
-		swap(stack_b);
+		swap(stack_b, 'b', print);
 }
 
-void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b)
+void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b, int print)
 {
 	if (instruction[1] == 'a' && lstsize(*stack_a) >= 2)
-		swap(stack_a);
+		swap(stack_a, 'a', print);
 	else if (instruction[1] == 'b' && lstsize(*stack_b) >= 2)
-		swap(stack_b);
+		swap(stack_b, 'b', print);
 	else if (instruction[1] == 's')
-		ss(stack_a, stack_b);
+		ss(stack_a, stack_b, print);
 }

@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/01 17:42:36 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/18 11:58:59 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/24 13:54:26 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,27 +68,27 @@ int	main(int argc, char **argv)
 		return (ret_and_free(&stack_a, &stack_b, &input));
 	if (stack_a)
 	{
-		printf("stack_a:\n");
-		lstiter(stack_a, print_lst_num);
+		// printf("stack_a:\n");
+		// lstiter(stack_a, print_lst_num);
 	}
 	if (stack_b)
 	{
-		printf("stack_b:\n");
-		lstiter(stack_b, print_lst_num);
+		// printf("stack_b:\n");
+		// lstiter(stack_b, print_lst_num);
 	}
-	printf("---backwards---\n");
+	// printf("---backwards---\n");
 	if (stack_a)
 	{
 		t_lst *tmp;
 
 		tmp = stack_a;
 		stack_a = stack_a->prev;
-		printf("stack_a:\n");
-		printf("%i\n", *(int *)stack_a->content);
+		// printf("stack_a:\n");
+		// printf("%i\n", *(int *)stack_a->content);
 		while (stack_a != tmp)
 		{
 			stack_a = stack_a->prev;
-			printf("%i\n", *(int *)stack_a->content);
+			// printf("%i\n", *(int *)stack_a->content);
 		}
 		stack_a = tmp;
 	}
@@ -98,12 +98,12 @@ int	main(int argc, char **argv)
 
 		tmp = stack_b;
 		stack_b = stack_b->prev;
-		printf("stack_b:\n");
-		printf("%i\n", *(int *)stack_b->content);
+		// printf("stack_b:\n");
+		// printf("%i\n", *(int *)stack_b->content);
 		while (stack_b != tmp)
 		{
 			stack_b = stack_b->prev;
-			printf("%i\n", *(int *)stack_b->content);
+			// printf("%i\n", *(int *)stack_b->content);
 		}
 		stack_b = tmp;
 	}

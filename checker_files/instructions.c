@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/03 12:37:40 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/18 11:55:46 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/24 17:06:04 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ int	instructions(t_lst **input, t_lst **stack_a, t_lst **stack_b)
 	while (*input)
 	{
 		if (*((char *)((*input)->content)) == 's')
-			swaps((*input)->content, stack_a, stack_b);
+			swaps((*input)->content, stack_a, stack_b, 0);
 		else if (*((char *)((*input)->content)) == 'p')
-			pushes((*input)->content, stack_a, stack_b);
+			pushes((*input)->content, stack_a, stack_b, 0);
 		else if (*((char *)((*input)->content)) == 'r')
-			rotates((*input)->content, stack_a, stack_b);
+			rotates((*input)->content, stack_a, stack_b, 0);
 		*input = (*input)->next;
 	}
 	return (0);

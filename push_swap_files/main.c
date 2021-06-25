@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/02 19:11:10 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/18 21:15:36 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/24 13:41:19 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int	main(int argc, char **argv)
 		return (1);
 	if (algo_1(&output, &stack_a, &stack_b) == 1)
 		return (1);
-	if (stack_a)
-	{
-		printf("stack_a:\n");
-		lstiter(stack_a, print_lst_num);
-	}
-	if (stack_b)
-	{
-		printf("stack_b:\n");
-		lstiter(stack_b, print_lst_num);
-	}
+	// if (stack_a)
+	// {
+	// 	printf("stack_a:\n");
+	// 	lstiter(stack_a, print_lst_num);
+	// }
+	// if (stack_b)
+	// {
+	// 	printf("stack_b:\n");
+	// 	lstiter(stack_b, print_lst_num);
+	// }
 	return (0);
 }
