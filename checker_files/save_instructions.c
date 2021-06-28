@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 11:33:08 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/24 17:05:58 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/25 21:19:39 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	save_instructions(t_lst **input)
 	}
 	if (ret == -1)
 	{
-		printf("Error: reading instructions\n");
+		write(2, "Error\n", 7);
 		return (1);
 	}
 	// printf("input:\n");

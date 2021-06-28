@@ -7,7 +7,7 @@ gen_arr(){
 	fi
 	I=0
 	ARG=""
-	while [ $I -le $1 ]; do
+	while [ $I -le $(($1 - 1)) ]; do
 		NUMBER=$(($RANDOM % 1000 - 500))
 		if [[ ! " ${dup_array[@]} " =~ " ${NUMBER} " ]]; then
 			dup_array[$I]=$NUMBER
@@ -25,6 +25,18 @@ ARR_SIZE=0
 YELLOW='\033[0;33m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
+
+gen_arr 3
+./push_swap $ARG | ./checker $ARG
+echo -ne "${YELLOW}n="
+./push_swap $ARG | wc -l
+echo -e "${RESET}"
+
+# gen_arr 500
+# ./push_swap $ARG | ./checker $ARG
+# echo -ne "${YELLOW}n="
+# ./push_swap $ARG | wc -l
+# echo -e "${RESET}"
 
 while [ $COUNTER -le $((30 + 1)) ]; do
 	if [ $(($COUNTER % 5)) -eq 0 ]
