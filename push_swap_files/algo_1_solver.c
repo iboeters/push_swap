@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/19 14:48:42 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/25 20:59:28 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/28 18:31:12 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	swap_it(t_lst **stack_a, int i, int len)
 			reverse_rotate(stack_a, 'a', 1);
 			j++;
 		}
+		// printf("swapping:|%d&%d|\n", *(int *)(*stack_a)->content, *(int *)((*stack_a)->next)->content);
 		swap(stack_a, 'a', 1);
 	}
 	else
@@ -69,6 +70,7 @@ void	swap_it(t_lst **stack_a, int i, int len)
 	    	rotate(stack_a, 'a', 1);
 	    	j++;
 	    }
+		// printf("swapping:|%d&%d|\n", *(int *)(*stack_a)->content, *(int *)((*stack_a)->next)->content);
 		swap(stack_a, 'a', 1);
 	}
 }
@@ -82,6 +84,7 @@ int	check_swap(t_lst *stack_a, int *i, int low_num, int high_num)
 	begin = *stack_a;
 	while (stack_a)
 	{
+		// printf("low_num=%d|high_num=%d\n", low_num, high_num);
 		current = *(int *)(stack_a)->content;
 		if (stack_a->next == NULL)
 		{
@@ -105,6 +108,8 @@ int	check_swap(t_lst *stack_a, int *i, int low_num, int high_num)
 
 void	uno(t_lst **stack_a, t_lst *lowest, t_lst *highest, int *i, int len)
 {
+	// printf("stack_a:\n");
+	// lstiter(*stack_a, print_lst_num);
 	if (is_sorted_front(lowest, highest, *stack_a) && is_sorted_back(lowest))
 		return ;
 	if (check_swap(*stack_a, i, *(int *)(lowest->content),
@@ -112,8 +117,7 @@ void	uno(t_lst **stack_a, t_lst *lowest, t_lst *highest, int *i, int len)
 	{
 		swap_it(stack_a, *i, len);
 	}
-	if (*i = len)
-		*i = 0;
+	*i = 0;
 	uno(stack_a, lowest, highest, i, len);
 }
 
@@ -167,12 +171,10 @@ void	algo_1_solver(t_lst **stack_a, t_lst **stack_b, int len)
 	lowest = *stack_a;
 	highest = (*stack_a)->prev;
 	// printf("lowest=%d, highest=%d\n", *(int *)lowest->content, *(int *)highest->content);
-	rotate(stack_a, 'a', 1);
-	rotate(stack_a, 'a', 1);
-	uno(stack_a, lowest, highest, &i, len);
-	rotate_right(stack_a, lowest, len);
 	// printf("stack_a:\n");
 	// lstiter(*stack_a, print_lst_num);
+	uno(stack_a, lowest, highest, &i, len);
+	rotate_right(stack_a, lowest, len);
 	return ;
 }
 
