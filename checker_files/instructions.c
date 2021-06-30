@@ -48,22 +48,22 @@ int	valid_instructions(t_lst *input)
 	return (0);
 }
 
-int	instructions(t_lst **input, t_lst **stack_a, t_lst **stack_b)
+int	instructions(t_lst *input, t_lst **stack_a, t_lst **stack_b)
 {
-	if (valid_instructions(*input) == 1)
+	if (valid_instructions(input) == 1)
 	{
 		write(2, "Error\n", 7);
 		return (1);
 	}
-	while (*input)
+	while (input)
 	{
-		if (*((char *)((*input)->content)) == 's')
-			swaps((*input)->content, stack_a, stack_b, 0);
-		else if (*((char *)((*input)->content)) == 'p')
-			pushes((*input)->content, stack_a, stack_b, 0);
-		else if (*((char *)((*input)->content)) == 'r')
-			rotates((*input)->content, stack_a, stack_b, 0);
-		*input = (*input)->next;
+		if (*((char *)(input->content)) == 's')
+			swaps(input->content, stack_a, stack_b, 0);
+		else if (*((char *)(input->content)) == 'p')
+			pushes(input->content, stack_a, stack_b, 0);
+		else if (*((char *)(input->content)) == 'r')
+			rotates(input->content, stack_a, stack_b, 0);
+		input = input->next;
 	}
 	return (0);
 }

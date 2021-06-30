@@ -6,7 +6,7 @@
 #    By: iboeters <iboeters@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/05/02 19:43:17 by iboeters      #+#    #+#                  #
-#    Updated: 2021/06/19 14:51:08 by iboeters      ########   odam.nl          #
+#    Updated: 2021/06/30 18:44:39 by iris          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC1 =	./get_next_line/get_next_line.c\
 		./push_swap_files/swaps.c\
 		./push_swap_files/main.c\
 		./push_swap_files/algo_1.c\
-		./push_swap_files/algo_1_solver.c
+		./push_swap_files/algo_1_solver.c\
+		./push_swap_files/change_nums.c
 
 SRC2 =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\

@@ -31,7 +31,7 @@ int		save_input(int argc, char **argv, t_lst **stack_a);
 void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
 void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
 void	pushes(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
-int		instructions(t_lst **input, t_lst **stack_a, t_lst **stack_b);
+int		instructions(t_lst *input, t_lst **stack_a, t_lst **stack_b);
 void	print_lst_num(void *num);
 void	lstadd_back(t_lst **lst, t_lst *new);
 void	lstadd_front(t_lst **lst, t_lst *new);
@@ -41,5 +41,6 @@ t_lst	*lstlast(t_lst *lst);
 t_lst	*lstnew(void *content);
 int		lstsize(t_lst *lst);
 int		save_instructions(t_lst **input);
+void	print_lst_str(void *str);
 
 #endif

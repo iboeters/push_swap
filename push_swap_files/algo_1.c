@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 21:10:20 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/24 14:09:38 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/30 21:37:10 by iris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int	lowest_highest(t_lst **stack_a, t_lst **stack_b)
 	return (0);
 }
 
-int	algo_1(t_lst **output, t_lst **stack_a, t_lst **stack_b)
+int	algo_1(t_lst **stack_a, t_lst **stack_b)
 {
 	int	len;
 

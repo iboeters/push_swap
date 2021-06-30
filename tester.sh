@@ -32,11 +32,11 @@ echo -ne "${YELLOW}n="
 ./push_swap $ARG | wc -l
 echo -e "${RESET}"
 
-# gen_arr 500
-# ./push_swap $ARG | ./checker $ARG
-# echo -ne "${YELLOW}n="
-# ./push_swap $ARG | wc -l
-# echo -e "${RESET}"
+gen_arr 5
+./push_swap $ARG | ./checker $ARG
+echo -ne "${YELLOW}n="
+./push_swap $ARG | wc -l
+echo -e "${RESET}"
 
 while [ $COUNTER -le $((30 + 1)) ]; do
 	if [ $(($COUNTER % 5)) -eq 0 ]

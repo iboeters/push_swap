@@ -110,15 +110,17 @@ void	uno(t_lst **stack_a, t_lst *lowest, t_lst *highest, int *i, int len)
 {
 	// printf("stack_a:\n");
 	// lstiter(*stack_a, print_lst_num);
-	if (is_sorted_front(lowest, highest, *stack_a) && is_sorted_back(lowest))
-		return ;
-	if (check_swap(*stack_a, i, *(int *)(lowest->content),
-	*(int *)(highest->content)))
+	while (!(is_sorted_front(lowest, highest, *stack_a) && is_sorted_back(lowest)))
 	{
-		swap_it(stack_a, *i, len);
+		if (check_swap(*stack_a, i, *(int *)(lowest->content),
+		*(int *)(highest->content)))
+		{
+			swap_it(stack_a, *i, len);
+		}
+		*i = 0;
 	}
-	*i = 0;
-	uno(stack_a, lowest, highest, i, len);
+	return ;
+	// uno(stack_a, lowest, highest, i, len);
 }
 
 void	rotate_right(t_lst **stack_a, t_lst *lowest, int len)

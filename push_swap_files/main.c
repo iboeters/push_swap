@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/02 19:11:10 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/24 13:41:19 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/30 22:19:33 by iris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,20 @@ int	main(int argc, char **argv)
 {
 	t_lst	*stack_a;
 	t_lst	*stack_b;
-	t_lst	*output;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	output = NULL;
 	if (argc <= 1)
 		return (1);
 	if (save_input(argc, argv, &stack_a) == 1)
-		return (1);
-	if (algo_1(&output, &stack_a, &stack_b) == 1)
-		return (1);
-	// if (stack_a)
-	// {
-	// 	printf("stack_a:\n");
-	// 	lstiter(stack_a, print_lst_num);
-	// }
-	// if (stack_b)
-	// {
-	// 	printf("stack_b:\n");
-	// 	lstiter(stack_b, print_lst_num);
-	// }
+		return (1); //freeen
+	if (change_nums(stack_a) == 1)
+		return (1); //freeen
+	if (algo_1(&stack_a, &stack_b) == 1)
+		return (1); //freeen
+	if (stack_a)
+		lstclear(&stack_a, free);
+	if (stack_b)
+		lstclear(&stack_b, free);
 	return (0);
 }

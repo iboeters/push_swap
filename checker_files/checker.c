@@ -64,53 +64,15 @@ int	main(int argc, char **argv)
 		return (ret_and_free(&stack_a, &stack_b, &input));
 	if (save_instructions(&input) == 1)
 		return (ret_and_free(&stack_a, &stack_b, &input));
-	if (instructions(&input, &stack_a, &stack_b) == 1)
+	if (instructions(input, &stack_a, &stack_b) == 1)
 		return (ret_and_free(&stack_a, &stack_b, &input));
-	if (stack_a)
-	{
-		// printf("stack_a:\n");
-		// lstiter(stack_a, print_lst_num);
-	}
-	if (stack_b)
-	{
-		// printf("stack_b:\n");
-		// lstiter(stack_b, print_lst_num);
-	}
-	// printf("---backwards---\n");
-	if (stack_a)
-	{
-		t_lst *tmp;
-
-		tmp = stack_a;
-		stack_a = stack_a->prev;
-		// printf("stack_a:\n");
-		// printf("%i\n", *(int *)stack_a->content);
-		while (stack_a != tmp)
-		{
-			stack_a = stack_a->prev;
-			// printf("%i\n", *(int *)stack_a->content);
-		}
-		stack_a = tmp;
-	}
-	if (stack_b)
-	{
-		t_lst *tmp;
-
-		tmp = stack_b;
-		stack_b = stack_b->prev;
-		// printf("stack_b:\n");
-		// printf("%i\n", *(int *)stack_b->content);
-		while (stack_b != tmp)
-		{
-			stack_b = stack_b->prev;
-			// printf("%i\n", *(int *)stack_b->content);
-		}
-		stack_b = tmp;
-	}
 	check_sorted(stack_a, stack_b);
-	lstclear(&input, free);
-	lstclear(&stack_a, free);
-	lstclear(&stack_b, free);
+	if (input)
+		lstclear(&input, free);
+	if (stack_a)
+		lstclear(&stack_a, free);
+	if (stack_b)
+		lstclear(&stack_b, free);
 	// while (1){} //check leaks
 	return (0);
 }
@@ -121,3 +83,45 @@ int	main(int argc, char **argv)
 ** [V] change everything to linked list
 ** [V] pa <> pb
 */
+
+	// if (stack_a)
+	// {
+	// 	// printf("stack_a:\n");
+	// 	// lstiter(stack_a, print_lst_num);
+	// }
+	// if (stack_b)
+	// {
+	// 	// printf("stack_b:\n");
+	// 	// lstiter(stack_b, print_lst_num);
+	// }
+	// printf("---backwards---\n");
+	// if (stack_a)
+	// {
+	// 	t_lst *tmp;
+
+	// 	tmp = stack_a;
+	// 	stack_a = stack_a->prev;
+	// 	// printf("stack_a:\n");
+	// 	// printf("%i\n", *(int *)stack_a->content);
+	// 	while (stack_a != tmp)
+	// 	{
+	// 		stack_a = stack_a->prev;
+	// 		// printf("%i\n", *(int *)stack_a->content);
+	// 	}
+	// 	stack_a = tmp;
+	// }
+	// if (stack_b)
+	// {
+	// 	t_lst *tmp;
+
+	// 	tmp = stack_b;
+	// 	stack_b = stack_b->prev;
+	// 	// printf("stack_b:\n");
+	// 	// printf("%i\n", *(int *)stack_b->content);
+	// 	while (stack_b != tmp)
+	// 	{
+	// 		stack_b = stack_b->prev;
+	// 		// printf("%i\n", *(int *)stack_b->content);
+	// 	}
+	// 	stack_b = tmp;
+	// }

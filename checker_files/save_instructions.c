@@ -37,9 +37,9 @@ int	save_instructions(t_lst **input)
 	if (ret == -1)
 	{
 		write(2, "Error\n", 7);
+		if (str)
+			free(str);
 		return (1);
 	}
-	// printf("input:\n");
-	// lstiter(*input, print_lst_str);
 	return (0);
 }
