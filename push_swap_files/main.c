@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/02 19:11:10 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/30 22:19:33 by iris          ########   odam.nl         */
+/*   Updated: 2021/07/01 21:20:42 by iris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int	main(int argc, char **argv)
 		return (1); //freeen
 	if (algo_1(&stack_a, &stack_b) == 1)
 		return (1); //freeen
-	if (stack_a)
-		lstclear(&stack_a, free);
-	if (stack_b)
-		lstclear(&stack_b, free);
+	lstclear(&stack_a, free);
+	lstclear(&stack_b, free);
 	return (0);
 }

@@ -6,23 +6,28 @@
 /*   By: iris <iris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/30 18:08:13 by iris          #+#    #+#                 */
-/*   Updated: 2021/06/30 22:27:36 by iris          ########   odam.nl         */
+/*   Updated: 2021/07/04 22:01:14 by iris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    change_stack(int *arr, t_lst *stack_a, int len)
+int    change_stack(int *arr, t_lst *stack_a, const int len)
 {
-	int	i;
+	unsigned int	i;
+	unsigned int	length;
 
+	length = (unsigned int)len;
 	while (stack_a)
 	{
 		i = 0;
-		while (i < len)
+		while (i < length)
 		{
 			if (*(int *)(stack_a)->content == arr[i])
-				*(int *)stack_a->content = arr[i];
+            {
+				*(unsigned int *)stack_a->content = i;
+				break ;
+            }
 			i++;
 		}
 		stack_a = (stack_a)->next;
@@ -81,21 +86,27 @@ int change_nums(t_lst *stack_a)
 {
     int len;
     int *arr;
-    int *arr_index;
+    int i;
 
+    i = 0;
     len = lstsize(stack_a);
-    arr = (int *)malloc((sizeof(int) * len + 1));
-    arr_index = (int *)malloc((sizeof(int) * len + 1));
-    if (!arr || !arr_index)
+    arr = (int *)malloc(sizeof(int) * len);
+    if (!arr)
         return (1);
     fill_arr(arr, stack_a);
     bubble_sort_arr(arr, len);
+    // printf("sortedstack:\n");
+    // lstiter(stack_a, print_lst_num);
+    // printf("arr:\n");
+    // while (i < len)
+    // {
+    //     printf("%d\n", arr[i]);
+    //     i++;
+    // }
     change_stack(arr, stack_a, len);
 	// printf("newstack:\n");
 	// lstiter(stack_a, print_lst_num);
     if (arr)
         free(arr);
-	if (arr_index)
-		free(arr_index);
 	return (0); // return(0) vergeten --> nog leaks
 }

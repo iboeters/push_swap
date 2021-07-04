@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 21:10:20 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/30 21:37:10 by iris          ########   odam.nl         */
+/*   Updated: 2021/07/04 22:03:26 by iris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,38 +106,26 @@ void	push_low_high(t_lst **stack_a, t_lst **stack_b, int low_index, int high_ind
 	return ;
 }
 
-int	lowest_highest(t_lst **stack_a, t_lst **stack_b)
+int	lowest_highest(t_lst **stack_a, t_lst **stack_b, int len)
 {
-	int	low;
-	int	high;
 	int	low_index;
 	int	high_index;
-	int	len;
+	int	i;
 	t_lst	*tmp;
 
-	low = *(int *)(*stack_a)->content;
-	high = *(int *)(*stack_a)->content;
-	low_index = 0;
-	high_index = 0;
-	len = 0;
+	i = 0;
 	tmp = *stack_a;
 	while (*stack_a)
 	{
-		if (*(int *)(*stack_a)->content < low)
-		{
-			low_index = len;
-			low = *(int *)(*stack_a)->content;
-		}
-		if (*(int *)(*stack_a)->content > high)
-		{
-			high_index = len;
-			high = *(int *)(*stack_a)->content;
-		}
+		if (*(int *)(*stack_a)->content == 0)
+			low_index = i;
+		if (*(int *)(*stack_a)->content == len - 1)
+			high_index = i;
 		*stack_a = (*stack_a)->next;
-		len++;
+		i++;
 	}
 	*stack_a = tmp;
-	// printf("[%i]%i|[%i]%i|len=%i\n", low_index, low, high_index, high, len);
+	// printf("[%i][%i]len=[%i]\n", low_index, high_index, len);
 	push_low_high(stack_a, stack_b, low_index, high_index, len);
 	return (0);
 }
@@ -146,7 +134,8 @@ int	algo_1(t_lst **stack_a, t_lst **stack_b)
 {
 	int	len;
 
-	lowest_highest(stack_a, stack_b);
+	len = lstsize(*stack_a);
+	lowest_highest(stack_a, stack_b, len);
 	len = lstsize(*stack_a);
 	algo_1_solver(stack_a, stack_b, len);
 	return (0);

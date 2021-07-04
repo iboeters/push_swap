@@ -8,7 +8,7 @@ gen_arr(){
 	I=0
 	ARG=""
 	while [ $I -le $(($1 - 1)) ]; do
-		NUMBER=$(($RANDOM % 1000 - 500))
+		NUMBER=$(($RANDOM % ($1 * 6) - ($1 * 3)))
 		if [[ ! " ${dup_array[@]} " =~ " ${NUMBER} " ]]; then
 			dup_array[$I]=$NUMBER
 			ARG+=" "
