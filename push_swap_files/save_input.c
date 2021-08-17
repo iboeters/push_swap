@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   save_input.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/05/01 19:29:52 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/30 21:38:28 by iris          ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 int	atoi_ret(const char *str, int i, int sign, unsigned int r, int *error)

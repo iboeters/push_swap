@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   checker.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/05/01 17:42:36 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/24 13:54:26 by iboeters      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "checker.h"
 
 int	ret_and_free(t_lst **stack_a, t_lst **stack_b, t_lst **input)
@@ -30,15 +18,20 @@ void	check_sorted(t_lst *stack_a, t_lst *stack_b)
 	int	prev;
 
 	if (lstsize(stack_b) > 0)
+	{
+		printf("stack_b not empty\n");
 		write (1, "KO\n", 3);
+	}
 	else
 	{
 		prev = *(int *)(stack_a->content);
 		stack_a = stack_a->next;
 		while (stack_a)
 		{
+			// printf("|%d|\n", prev);
 			if (*(int *)(stack_a->content) < prev)
 			{
+				// printf("goes wrong here: [%d][%d]\n", prev, *(int *)(stack_a->content));
 				write(1, "KO\n", 3);
 				return ;
 			}

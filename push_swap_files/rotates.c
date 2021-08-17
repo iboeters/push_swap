@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   rotates.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/05/03 20:22:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/24 14:07:13 by iboeters      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 void	rotate(t_lst **stack, char ab, int print)
@@ -26,10 +14,12 @@ void	rotate(t_lst **stack, char ab, int print)
 
 void	rr(t_lst **stack_a, t_lst **stack_b, int len_a, int len_b, int print)
 {
+	if (print)
+		printf("rr\n");
 	if (len_a >= 2)
-		rotate(stack_a, 'a', print);
+		rotate(stack_a, 'a', 0);
 	if (len_b >= 2)
-		rotate(stack_b, 'b', print);
+		rotate(stack_b, 'b', 0);
 }
 
 void	reverse_rotate(t_lst **stack, char ab, int print)
@@ -47,10 +37,12 @@ void	reverse_rotate(t_lst **stack, char ab, int print)
 
 void	rrr(t_lst **stack_a, t_lst **stack_b, int len_a, int len_b, int print)
 {
+	if (print)
+		printf("rrr\n");
 	if (len_a >= 2)
-		reverse_rotate(stack_a, 'a', print);
+		reverse_rotate(stack_a, 'a', 0);
 	if (len_b >= 2)
-		reverse_rotate(stack_b, 'b', print);
+		reverse_rotate(stack_b, 'b', 0);
 }
 
 void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b, int print)
@@ -60,6 +52,7 @@ void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b, int print)
 
 	len_a = lstsize(*stack_a);
 	len_b = lstsize(*stack_b);
+	// printf("len_a=%d|len_b=%d\n", len_a, len_b);
 	if (instruction[1] == 'a' && len_a >= 2)
 		rotate(stack_a, 'a', print);
 	else if (instruction[1] == 'b' && len_b >= 2)

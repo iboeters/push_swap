@@ -1,29 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   algo_1_solver.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/06/19 14:48:42 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/28 18:31:12 by iboeters      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-int	is_sorted_front(t_lst *lowest, t_lst *highest, t_lst *stack_a)
+int	is_sorted_front(t_lst *lowest, t_lst *highest, t_lst *stack, char ab)
 {
 	int	prev;
 
-	if (lowest == stack_a) // if so, sorted_back is enough
+	if (lowest == stack) // if so, sorted_back is enough
 		return (1);
 	lowest = lowest->prev;
 	prev = *(int *)(lowest->content);
 	lowest = lowest->prev;
-	while (lowest != (stack_a->prev)->prev)
+	while (lowest != (stack->prev)->prev)
 	{
-		if (*(int *)(lowest->content) > prev && lowest != highest &&
+		if (ab == 'a' && *(int *)(lowest->content) > prev && lowest != highest &&
+		prev != *(int *)(highest->content))
+			return (0);
+		else if (ab == 'b' && *(int *)(lowest->content) < prev && lowest != highest &&
 		prev != *(int *)(highest->content))
 			return (0);
 		prev = *(int *)(lowest->content);
@@ -32,7 +23,7 @@ int	is_sorted_front(t_lst *lowest, t_lst *highest, t_lst *stack_a)
 	return (1);
 }
 
-int	is_sorted_back(t_lst *lowest)
+int	is_sorted_back(t_lst *lowest, char ab)
 {
 	int	prev;
 
@@ -40,7 +31,9 @@ int	is_sorted_back(t_lst *lowest)
 	lowest = lowest->next;
 	while (lowest)
 	{
-		if (*(int *)(lowest->content) < prev)
+		if (ab == 'a' && *(int *)(lowest->content) < prev)
+			return (0);
+		else if (ab == 'b' && *(int *)(lowest->content) > prev)
 			return (0);
 		prev = *(int *)(lowest->content);
 		lowest = lowest->next;
@@ -48,82 +41,7 @@ int	is_sorted_back(t_lst *lowest)
 	return (1);
 }
 
-void	swap_it(t_lst **stack_a, int i, int len)
-{
-	int	j;
-
-	j = 0;
-	if (i >= len / 2)
-	{
-		while (j < len - i)
-		{
-			reverse_rotate(stack_a, 'a', 1);
-			j++;
-		}
-		// printf("swapping:|%d&%d|\n", *(int *)(*stack_a)->content, *(int *)((*stack_a)->next)->content);
-		swap(stack_a, 'a', 1);
-	}
-	else
-	{
-		while (j < i)
-	    {
-	    	rotate(stack_a, 'a', 1);
-	    	j++;
-	    }
-		// printf("swapping:|%d&%d|\n", *(int *)(*stack_a)->content, *(int *)((*stack_a)->next)->content);
-		swap(stack_a, 'a', 1);
-	}
-}
-
-int	check_swap(t_lst *stack_a, int *i, int low_num, int high_num)
-{
-	int current;
-	int next;
-	t_lst	begin;
-
-	begin = *stack_a;
-	while (stack_a)
-	{
-		// printf("low_num=%d|high_num=%d\n", low_num, high_num);
-		current = *(int *)(stack_a)->content;
-		if (stack_a->next == NULL)
-		{
-			stack_a = &begin;
-			next = *(int *)(stack_a)->content;
-		}
-		else
-			next = *(int *)((stack_a)->next)->content; // hier segfault ie
-		// printf("stack_a:\n");
-		// lstiter(stack_a, print_lst_num);
-		// printf("%d,%d\n", current, next);
-		if (current > next &&
-		current != low_num && current != high_num &&
-		next != low_num && next != high_num)
-			return (1);
-		stack_a = stack_a->next;
-		(*i)++;
-	}
-	return (0);
-}
-
-void	uno(t_lst **stack_a, t_lst *lowest, t_lst *highest, int *i, int len)
-{
-	// printf("stack_a:\n");
-	// lstiter(*stack_a, print_lst_num);
-	while (!(is_sorted_front(lowest, highest, *stack_a) && is_sorted_back(lowest)))
-	{
-		if (check_swap(*stack_a, i, *(int *)(lowest->content),
-		*(int *)(highest->content)))
-		{
-			swap_it(stack_a, *i, len);
-		}
-		*i = 0;
-	}
-	return ;
-	// uno(stack_a, lowest, highest, i, len);
-}
-
-void	rotate_right(t_lst **stack_a, t_lst *lowest, int len)
+void	rotate_right(t_lst **stack_a, t_lst *lowest, int len, char ab)
 {
 	int	i;
 	int	j;
@@ -140,7 +58,7 @@ void	rotate_right(t_lst **stack_a, t_lst *lowest, int len)
 	{
 		while (j < len - i)
 		{
-			reverse_rotate(stack_a, 'a', 1);
+			reverse_rotate(stack_a, ab, 1);
 			j++;
 		}
 	}
@@ -148,35 +66,53 @@ void	rotate_right(t_lst **stack_a, t_lst *lowest, int len)
 	{
 		while (j < i)
 	    {
-	    	rotate(stack_a, 'a', 1);
+	    	rotate(stack_a, ab, 1);
 	    	j++;
 	    }
 	}
 }
 
-void	algo_1_solver(t_lst **stack_a, t_lst **stack_b, int len)
+void	push_back(t_lst **stack_a, t_lst **stack_b)
 {
-	t_lst *lowest;
-	t_lst *highest;
+	int	len;
 	int	i;
 
+	len = lstsize(*stack_b);
 	i = 0;
-	len += 2;
-	if (*stack_b && *(int *)((*stack_b)->content) > *(int *)(((*stack_b)->next)->content))
-		swap(stack_b, 'b', 1);
-	if (*stack_b)
+	while (i < len)
 	{
 		push(stack_a, stack_b, 'a', 1);
-		push(stack_a, stack_b, 'a', 1);
-		rotate(stack_a, 'a', 1);
+		i++;
 	}
-	lowest = *stack_a;
-	highest = (*stack_a)->prev;
-	// printf("lowest=%d, highest=%d\n", *(int *)lowest->content, *(int *)highest->content);
+}
+
+void	algo_1_solver(t_lst **stack_a, t_lst **stack_b, int len)
+{
+	t_lst *low_a;
+	t_lst *high_a;
+	t_lst	*low_b;
+	t_lst	*high_b;
+	int	i;
+	int j;
+
+	i = 0;
+	j = 0;
+	len += 2;
+	low_a = *stack_a;
+	high_a = (*stack_a)->prev;
+	low_b = (*stack_b)->prev;
+	high_b = *stack_b;
+	// printf("low_a=%d, high_a=%d\n", *(int *)low_a->content, *(int *)high_a->content);
 	// printf("stack_a:\n");
 	// lstiter(*stack_a, print_lst_num);
-	uno(stack_a, lowest, highest, &i, len);
-	rotate_right(stack_a, lowest, len);
+	uno(stack_a, stack_b, low_a, high_a, low_b, high_b, &i, &j, len);
+	rotate_right(stack_a, low_a, len, 'a');
+	rotate_right(stack_b, high_b, len, 'b');
+	push_back(stack_a, stack_b);
+	// printf("stack_a:\n");
+	// lstiter(*stack_a, print_lst_num);
+	// printf("stack_b:\n");
+	// lstiter(*stack_b, print_lst_num);
 	return ;
 }
 

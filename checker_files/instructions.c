@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   instructions.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/05/03 12:37:40 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/25 21:19:44 by iboeters      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "checker.h"
 
 int	ft_strcmp(const char *str, const char *str2)
@@ -29,7 +17,7 @@ int	ft_strcmp(const char *str, const char *str2)
 int	valid_instructions(t_lst *input)
 {
 	while (input)
-	{
+	{ // include lengths of string here??
 		if (ft_strcmp(input->content, "sa") == 0
 			|| ft_strcmp(input->content, "sb") == 0
 			|| ft_strcmp(input->content, "ss") == 0
@@ -57,12 +45,17 @@ int	instructions(t_lst *input, t_lst **stack_a, t_lst **stack_b)
 	}
 	while (input)
 	{
+		// printf("action= [%s]\n", (char *)input->content);
 		if (*((char *)(input->content)) == 's')
 			swaps(input->content, stack_a, stack_b, 0);
 		else if (*((char *)(input->content)) == 'p')
 			pushes(input->content, stack_a, stack_b, 0);
 		else if (*((char *)(input->content)) == 'r')
 			rotates(input->content, stack_a, stack_b, 0);
+		// printf("stack_a:\n");
+		// lstiter(*stack_a, print_lst_num);
+		// printf("stack_b:\n");
+		// lstiter(*stack_b, print_lst_num);
 		input = input->next;
 	}
 	return (0);
