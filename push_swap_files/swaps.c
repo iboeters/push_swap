@@ -28,9 +28,9 @@ void	ss(t_lst **stack_a, t_lst **stack_b, int print)
 {
 	if (print)
 		printf("ss\n");
-	// if (lstsize(*stack_a) >= 2)
+	if (lstsize(*stack_a) >= 2)
 		swap(stack_a, 'a', 0);
-	// if (lstsize(*stack_b) >= 2)
+	if (lstsize(*stack_b) >= 2)
 		swap(stack_b, 'b', 0);
 }
 

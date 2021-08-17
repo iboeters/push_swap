@@ -64,9 +64,10 @@ void	push_second(t_lst **stack_1, t_lst **stack_2, int second_index, const int l
 		other = 'b';
 	else
 		other = 'a';
-	if (second_index >= len / 2)
+	// printf("len=%d, len/2=%d, second_ind=%d\n", len, len/2, second_index);
+	if (second_index >= len / 2) // 3 >= 2
 	{
-		while (i < len - second_index)
+		while (i < len - second_index) // 0 < (3 - 2)
 		{
 			reverse_rotate(stack_1, ab, 1);
 			i++;
@@ -87,21 +88,21 @@ void	push_second(t_lst **stack_1, t_lst **stack_2, int second_index, const int l
 int	push_low_high(t_lst **stack_1, t_lst **stack_2, int low_index, int high_index, int len, char ab)
 {
 	// printf("%i|%i|%i\n", len, low_index, high_index);
-	if (ab == 'a' && low_index == 0 && high_index == len / 2 - 1)
+	if (ab == 'a' && low_index == 0 && high_index == len - 1)
 		return (0);
-	else if (ab == 'b' && low_index == len / 2 - 1 && high_index == 0)
+	else if (ab == 'b' && low_index == len - 1 && high_index == 0)
 		return (0);
-	if (low_closest(low_index, high_index, len / 2))
+	if (low_closest(low_index, high_index, len))
 	{
-		push_first(stack_1, stack_2, low_index, &high_index, len / 2, ab);
+		push_first(stack_1, stack_2, low_index, &high_index, len, ab);
 		len--;
-		push_second(stack_1, stack_2, high_index, len / 2, ab);
+		push_second(stack_1, stack_2, high_index, len, ab);
 	}
 	else
 	{
-		push_first(stack_1, stack_2, high_index, &low_index, len / 2, ab);
+		push_first(stack_1, stack_2, high_index, &low_index, len, ab);
 		len--;
-		push_second(stack_1, stack_2, low_index, len / 2, ab);
+		push_second(stack_1, stack_2, low_index, len, ab);
 	}
 	return (1);
 }
@@ -150,7 +151,7 @@ int	algo_1(t_lst **stack_a, t_lst **stack_b)
 	len = lstsize(*stack_a);
 	push_half(stack_a, stack_b, len);
 	ret = push_low_high(stack_a, stack_b, get_index(stack_a, len / 2),
-	get_index(stack_a, len - 1), len, 'a');
+	get_index(stack_a, len - 1), lstsize(*stack_a), 'a');
 	if (*stack_b && *(int *)((*stack_b)->content) > *(int *)(((*stack_b)->next)->content) && ret)
 		swap(stack_b, 'b', 1);
 	if (*stack_b && ret)
@@ -160,7 +161,7 @@ int	algo_1(t_lst **stack_a, t_lst **stack_b)
 		rotate(stack_a, 'a', 1);
 	}
 	ret = push_low_high(stack_b, stack_a, get_index(stack_b, 0),
-	get_index(stack_b, len / 2 - 1), len, 'b');
+	get_index(stack_b, len / 2 - 1), lstsize(*stack_b), 'b');
 	if (*stack_a && *(int *)((*stack_a)->content) < *(int *)(((*stack_a)->next)->content) && ret)
 		swap(stack_a, 'a', 1);
 	if (*stack_a && ret)
@@ -173,7 +174,12 @@ int	algo_1(t_lst **stack_a, t_lst **stack_b)
 	// lstiter(*stack_a, print_lst_num);
 	// printf("stack_b:\n");
 	// lstiter(*stack_b, print_lst_num);
-	// len = lstsize(*stack_a);
+	// printf("   ----------solve----------\n");
+	len = lstsize(*stack_a);
 	algo_1_solver(stack_a, stack_b, len);
+	// printf("stack_a:\n");
+	// lstiter(*stack_a, print_lst_num);
+	// printf("stack_b:\n");
+	// lstiter(*stack_b, print_lst_num);
 	return (0);
 }

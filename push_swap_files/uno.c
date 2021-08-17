@@ -57,9 +57,10 @@ int	check_swap(t_lst *stack, int *i, int low_num, int high_num, char ab)
 	t_lst	begin;
 
 	begin = *stack;
+	current = 0;
+	next = 0;
 	while (stack)
 	{
-		
 		current = *(int *)(stack)->content;
 		if (stack->next == NULL)
 		{
@@ -102,6 +103,7 @@ void	uno(t_lst **stack_a, t_lst **stack_b, t_lst *low_a, t_lst *high_a, t_lst *l
 	sort_b = 0;
 	action_a = 0;
 	action_b = 0;
+
 	while (!sort_a || !sort_b)
 	{
 		*i = 0;
@@ -110,6 +112,7 @@ void	uno(t_lst **stack_a, t_lst **stack_b, t_lst *low_a, t_lst *high_a, t_lst *l
 			sort_a = 1;
 		if (is_sorted_front(high_b, low_b, *stack_b, 'b') && is_sorted_back(high_b, 'b'))
 			sort_b = 1;
+		// printf("sort_a=%d | sort_b=%d\n", sort_a, sort_b);
 		if (!sort_a)
 		{
 			check_swap(*stack_a, i, *(int *)low_a->content, *(int *)high_a->content, 'a');
@@ -147,10 +150,6 @@ void	uno(t_lst **stack_a, t_lst **stack_b, t_lst *low_a, t_lst *high_a, t_lst *l
 		// {
 		// 	swap_it(stack_b, *j, len / 2, 'b');
 		// }
-		// printf("stack_a:\n");
-		// lstiter(*stack_a, print_lst_num);
-		// printf("stack_b:\n");
-		// lstiter(*stack_b, print_lst_num);
 	}
 	return ;
 	// uno(stack_a, low_a, high_a, i, len);

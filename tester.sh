@@ -20,7 +20,7 @@ gen_arr(){
 }
 
 COUNTER=0
-ARR_SIZE=0
+ARR_SIZE=10
 
 YELLOW='\033[0;33m'
 PURPLE='\033[0;35m'
