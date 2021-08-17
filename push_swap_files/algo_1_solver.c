@@ -64,7 +64,7 @@ void	rotate_right(t_lst **stack_a, t_lst *lowest, int len, char ab)
 	}
 	else
 	{
-		j = 1;
+		j = 0;
 		while (j < i)
 	    {
 	    	rotate(stack_a, ab, 1);

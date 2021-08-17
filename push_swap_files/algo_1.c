@@ -128,28 +128,13 @@ unsigned int	get_index(t_lst **stack_1, unsigned int num)
 	return (0);
 }
 
-void	push_half(t_lst **stack_a, t_lst **stack_b, const int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		if (*(int *)(*stack_a)->content < len / 2)
-			push(stack_b, stack_a, 'b', 1);
-		else
-			rotate(stack_a, 'a', 1);
-		i++;
-	}
-}
-
 int	algo_1(t_lst **stack_a, t_lst **stack_b)
 {
 	int	len;
 	int	ret;
 
 	len = lstsize(*stack_a);
-	push_half(stack_a, stack_b, len);
+	pre_sorting(stack_a, stack_b, len);
 	ret = push_low_high(stack_a, stack_b, get_index(stack_a, len / 2),
 	get_index(stack_a, len - 1), lstsize(*stack_a), 'a');
 	if (*stack_b && *(int *)((*stack_b)->content) > *(int *)(((*stack_b)->next)->content) && ret)

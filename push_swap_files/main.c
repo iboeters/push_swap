@@ -24,3 +24,7 @@ int	main(int argc, char **argv)
 	lstclear(&stack_b, free);
 	return (0);
 }
+
+// To do:
+// [ ] fix back error
+//
