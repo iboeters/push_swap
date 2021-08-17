@@ -57,7 +57,7 @@ void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b, int print)
 		rotate(stack_a, 'a', print);
 	else if (instruction[1] == 'b' && len_b >= 2)
 		rotate(stack_b, 'b', print);
-	else if (instruction[1] == 'r' && instruction[1] == '\0')
+	else if (instruction[1] == 'r' && instruction[2] == '\0')
 		rr(stack_a, stack_b, len_a, len_b, print);
 	else if (instruction[2] == 'a' && len_a >= 2)
 		reverse_rotate(stack_a, 'a', print);
