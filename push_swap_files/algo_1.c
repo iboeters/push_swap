@@ -20,9 +20,11 @@ int		low_closest(int low_index, int high_index, int len)
 void	push_first(t_lst **stack_1, t_lst **stack_2, int first_index, int *second_index, const int len, char ab)
 {
 	int i;
+	int j;
 	char other;
 
 	i = 0;
+	j = 0;
 	if (ab == 'a')
 		other = 'b';
 	else
@@ -32,31 +34,47 @@ void	push_first(t_lst **stack_1, t_lst **stack_2, int first_index, int *second_i
 		while (i < len - first_index)
 		{
 			reverse_rotate(stack_1, ab, 1);
-			(*second_index) = (*second_index) + 1 % len;
+			(*second_index) = ((*second_index) + 1) % len;
 			i++;
 		}
 		push(stack_2, stack_1, other, 1);
 		(*second_index)--;
+		while (j < i)
+		{
+			rotate(stack_1, ab, 1);
+			(*second_index)--;
+			if ((*second_index) == -1)
+				(*second_index) = len - 2;
+			j++;
+		}
 	}
 	else if (first_index < len / 2)
 	{
 		while (i < first_index)
 		{
+			rotate(stack_1, ab, 1);
 			(*second_index)--;
 			if ((*second_index) == -1)
 				(*second_index) = len - 1;
-			rotate(stack_1, ab, 1);
 			i++;
 		}
 		push(stack_2, stack_1, other, 1);
 		(*second_index)--;
+		while (j < i)
+		{
+			// printf("joehoe\n");
+			reverse_rotate(stack_1, ab, 1);
+			(*second_index) = ((*second_index) + 1) % (len - 1);
+			j++;
+		}
 	}
-		// printf("*second_index=%d\n", (*second_index));
+	// printf("*second_index=%d\n", (*second_index));
 }
 
 void	push_second(t_lst **stack_1, t_lst **stack_2, int second_index, const int len, char ab)
 {
 	int i;
+	int j;
 	char other;
 
 	i = 0;
@@ -73,6 +91,11 @@ void	push_second(t_lst **stack_1, t_lst **stack_2, int second_index, const int l
 			i++;
 		}
 		push(stack_2, stack_1, other, 1);
+		while (j < i)
+		{
+			rotate(stack_1, ab, 1);
+			j++;
+		}
 	}
 	else if (second_index < len / 2)
 	{
@@ -82,6 +105,11 @@ void	push_second(t_lst **stack_1, t_lst **stack_2, int second_index, const int l
 			i++;
 		}
 		push(stack_2, stack_1, other, 1);
+		while (j < i)
+		{
+			reverse_rotate(stack_1, ab, 1);
+			j++;
+		}
 	}
 }
 
@@ -161,6 +189,7 @@ int	algo_1(t_lst **stack_a, t_lst **stack_b)
 	// lstiter(*stack_b, print_lst_num);
 	// printf("   ----------solve----------\n");
 	len = lstsize(*stack_a);
+	// return(0);
 	algo_1_solver(stack_a, stack_b, len);
 	// printf("stack_a:\n");
 	// lstiter(*stack_a, print_lst_num);
