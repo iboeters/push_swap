@@ -6,24 +6,32 @@ void	push_half(t_lst **stack_a, t_lst **stack_b, int len)
     int new_len;
 
 	i = 0;
-	while (i < len)
-	{
-		if (*(int *)(*stack_a)->content < len / 4)
-			push(stack_b, stack_a, 'b', 1);
-		else
-			rotate(stack_a, 'a', 1);
-		i++;
-	}
+	// while (i < len)
+	// {
+	// 	if (*(int *)(*stack_a)->content < (len / 4))
+	// 		push(stack_b, stack_a, 'b', 1);
+	// 	else
+	// 		rotate(stack_a, 'a', 1);
+	// 	i++;
+	// }
 	new_len = lstsize(*stack_a);
     i = 0;
 	while (i < new_len)
 	{
-		if (*(int *)(*stack_a)->content < len / 2)
+		if (*(int *)(*stack_a)->content < (len / 2))
 			push(stack_b, stack_a, 'b', 1);
 		else
 			rotate(stack_a, 'a', 1);
 		i++;
 	}
+	// while (i < len)
+	// {
+	// 	if (*(int *)(*stack_a)->content < (len / 2))
+	// 		push(stack_b, stack_a, 'b', 1);
+	// 	else
+	// 		rotate(stack_a, 'a', 1);
+	// 	i++;
+	// }
 }
 
 int pre_sorting(t_lst **stack_a, t_lst **stack_b, int len)

@@ -78,6 +78,7 @@ void	push_second(t_lst **stack_1, t_lst **stack_2, int second_index, const int l
 	char other;
 
 	i = 0;
+	j = 0;
 	if (ab == 'a')
 		other = 'b';
 	else
@@ -120,6 +121,19 @@ int	push_low_high(t_lst **stack_1, t_lst **stack_2, int low_index, int high_inde
 		return (0);
 	else if (ab == 'b' && low_index == len - 1 && high_index == 0)
 		return (0);
+	else if (ab == 'a' && len == 2)
+	{
+		if (low_index > high_index)
+			swap(stack_1, ab, 1);
+		return (0);
+	}
+	else if (ab == 'b' && len == 2)
+	{
+		if (high_index > low_index)
+			swap(stack_1, ab, 1);
+		return (0);
+	}
+
 	if (low_closest(low_index, high_index, len))
 	{
 		push_first(stack_1, stack_2, low_index, &high_index, len, ab);
@@ -189,7 +203,6 @@ int	algo_1(t_lst **stack_a, t_lst **stack_b)
 	// lstiter(*stack_b, print_lst_num);
 	// printf("   ----------solve----------\n");
 	len = lstsize(*stack_a);
-	// return(0);
 	algo_1_solver(stack_a, stack_b, len);
 	// printf("stack_a:\n");
 	// lstiter(*stack_a, print_lst_num);

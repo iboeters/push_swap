@@ -24,3 +24,6 @@ int	main(int argc, char **argv)
 	lstclear(&stack_b, free);
 	return (0);
 }
+
+// to do:
+// [ ] less than 4 nums

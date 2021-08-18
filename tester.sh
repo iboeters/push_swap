@@ -19,39 +19,50 @@ gen_arr(){
 	echo $ARG
 }
 
-COUNTER=0
-ARR_SIZE=10
+checkin(){
+	COUNTER=0
+	ARR_SIZE=$1
+	while [ $COUNTER -lt $2 ]; do
+		if [ $(($COUNTER)) -eq 0 ]
+		then
+			# echo ""
+			echo -ne "${PURPLE}Test with "
+			echo -n $ARR_SIZE
+			echo -e " numbers-------------------------------------------${RESET}"
+			if [ $ARR_SIZE -eq 3 ]
+			then
+				echo -e "${PURPLE}MAX ACTIONS=3${RESET}"
+			fi
+			if [ $ARR_SIZE -eq 5 ]
+			then
+				echo -e "${PURPLE}MAX ACTIONS=12${RESET}"
+			fi
+			if [ $ARR_SIZE -eq 100 ]
+			then
+				echo -e "${PURPLE}MAX ACTIONS=1500 (L700) ${RESET}"
+			fi
+			if [ $ARR_SIZE -eq 500 ]
+			then
+				echo -e "${PURPLE}MAX ACTIONS=11500 (L5500) ${RESET}"
+			fi
+		fi
+		gen_arr $ARR_SIZE
+
+		./push_swap $ARG | ./checker $ARG
+		echo -ne "${YELLOW}n="
+		./push_swap $ARG | wc -l
+		echo -e "${RESET}"
+		((COUNTER++))
+	done
+}
 
 YELLOW='\033[0;33m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
 
-# gen_arr 3
-# ./push_swap $ARG | ./checker $ARG
-# echo -ne "${YELLOW}n="
-# ./push_swap $ARG | wc -l
-# echo -e "${RESET}"
+TEST_N=3
 
-# gen_arr 500
-# ./push_swap $ARG | ./checker $ARG
-# echo -ne "${YELLOW}n="
-# ./push_swap $ARG | wc -l
-# echo -e "${RESET}"
-
-while [ $COUNTER -le $((24 + 1)) ]; do
-	gen_arr $ARR_SIZE
-
-	./push_swap $ARG | ./checker $ARG
-	echo -ne "${YELLOW}n="
-	./push_swap $ARG | wc -l
-	echo -e "${RESET}"
-	((COUNTER++))
-	if [ $(($COUNTER % 4)) -eq 0 ]
-	then
-		((ARR_SIZE += 20))
-		echo ""
-		echo -ne "${PURPLE}Test with "
-		echo -n $ARR_SIZE
-		echo -e " numbers-------------------------------------------${RESET}"
-	fi
-done
+checkin 5 $TEST_N
+checkin 10 $TEST_N
+checkin 100 $TEST_N
+# checkin 500 $TEST_N
