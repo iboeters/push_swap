@@ -28,7 +28,7 @@ void	algo_1_solver(t_lst **stack_a, t_lst **stack_b, int len);
 int     change_nums(t_lst *stack_a);
 int		is_sorted_front(t_lst *lowest, t_lst *highest, t_lst *stack_a, char ab);
 int		is_sorted_back(t_lst *lowest, char ab);
-void	uno(t_lst **stack_a, t_lst **stack_b, t_lst *low_a, t_lst *high_a, t_lst *low_b, t_lst *high_b, int *i, int *j, int len);
+void	uno(t_lst **stack_a, t_lst **stack_b, t_lst *low_a, t_lst *high_a, t_lst *low_b, t_lst *high_b, int *i, int *j);
 int     pre_sorting(t_lst **stack_a, t_lst **stack_b, int len);
 
 #endif

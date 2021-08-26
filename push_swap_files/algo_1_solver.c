@@ -104,7 +104,7 @@ void	algo_1_solver(t_lst **stack_a, t_lst **stack_b, int len)
 	low_b = (*stack_b)->prev;
 	high_b = *stack_b;
 	// printf("low_a=%d, high_a=%d\n", *(int *)low_a->content, *(int *)high_a->content);
-	uno(stack_a, stack_b, low_a, high_a, low_b, high_b, &i, &j, len);
+	uno(stack_a, stack_b, low_a, high_a, low_b, high_b, &i, &j);
 	rotate_right(stack_a, low_a, lstsize(*stack_a), 'a');
 	rotate_right(stack_b, high_b, lstsize(*stack_b), 'b');
 	push_back(stack_a, stack_b);
