@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/19 14:48:42 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/28 18:31:12 by iboeters      ########   odam.nl         */
+/*   Updated: 2021/06/28 18:55:09 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ int	check_swap(t_lst *stack_a, int *i, int low_num, int high_num)
 		}
 		else
 			next = *(int *)((stack_a)->next)->content; // hier segfault ie
-		// printf("stack_a:\n");
-		// lstiter(stack_a, print_lst_num);
 		// printf("%d,%d\n", current, next);
 		if (current > next &&
 		current != low_num && current != high_num &&
