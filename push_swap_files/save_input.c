@@ -61,7 +61,8 @@ int	save_input(int argc, char **argv, t_lst **stack_a)
 		{
 			if (*(int *)last->content == *num)
 			{
-				printf("\033[31mError: duplicate arguments number:|%i|\033[0m\n", *num);
+				printf("\033[31mError: duplicate arguments number:|%i|\033[0m\n", *num); //change to just error
+				// write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
 				return (1);
 			}
 			last = last->prev;
@@ -70,7 +71,8 @@ int	save_input(int argc, char **argv, t_lst **stack_a)
 	}
 	if (error == 1)
 	{
-		printf("\033[31mError: invalid argument(s)\033[0m\n");
+		printf("\033[31mError: invalid argument(s)\033[0m\n"); //change to just error
+		// write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
 		return (1);
 	}
 	return (0);

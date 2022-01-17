@@ -1,5 +1,6 @@
 #include "checker.h"
 
+// can be deleted if not used
 void	print_lst_str(void *str)
 {
 	printf("%s\n", (char *)str);
@@ -13,7 +14,7 @@ int	save_instructions(t_lst **input)
 	ret = 1;
 	while (ret >= 1)
 	{
-		ret = get_next_line(0, &str);
+		ret = get_next_line(STDIN_FILENO, &str);
 		if (ret != 1)
 		{
 			if (str)
@@ -24,7 +25,7 @@ int	save_instructions(t_lst **input)
 	}
 	if (ret == -1)
 	{
-		write(2, "Error\n", 7);
+		write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
 		if (str)
 			free(str);
 		return (1);

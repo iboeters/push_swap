@@ -11,13 +11,13 @@ int	ft_strcmp(const char *str, const char *str2)
 	}
 	if (str[i] == '\0' && str2[i] == '\0')
 		return (0);
-	return (1);
+	return (str[i] - str2[i]);
 }
 
 int	valid_instructions(t_lst *input)
 {
 	while (input)
-	{ // include lengths of string here??
+	{
 		if (ft_strcmp(input->content, "sa") == 0
 			|| ft_strcmp(input->content, "sb") == 0
 			|| ft_strcmp(input->content, "ss") == 0
@@ -40,7 +40,7 @@ int	instructions(t_lst *input, t_lst **stack_a, t_lst **stack_b)
 {
 	if (valid_instructions(input) == 1)
 	{
-		write(2, "Error\n", 7);
+		write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
 		return (1);
 	}
 	while (input)

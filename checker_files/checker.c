@@ -23,8 +23,8 @@ void	check_sorted(t_lst *stack_a, t_lst *stack_b)
 	// lstiter(stack_b, print_lst_num);
 	if (lstsize(stack_b) > 0)
 	{
-		printf("stack_b not empty\n");
-		write (1, "KO\n", 3);
+		printf("stack_b not empty\n"); //delete
+		write(STDOUT_FILENO, "KO\n", ft_strlen("KO\n"));
 	}
 	else
 	{
@@ -36,13 +36,13 @@ void	check_sorted(t_lst *stack_a, t_lst *stack_b)
 			if (*(int *)(stack_a->content) < prev)
 			{
 				// printf("goes wrong here: [%d][%d]\n", prev, *(int *)(stack_a->content));
-				write(1, "KO\n", 3);
+				write(STDOUT_FILENO, "KO\n", ft_strlen("KO\n"));
 				return ;
 			}
 			prev = *(int *)(stack_a->content);
 			stack_a = stack_a->next;
 		}
-		write(1, "OK\n", 3);
+		write(STDOUT_FILENO, "OK\n", ft_strlen("KO\n"));
 	}
 }
 
@@ -79,6 +79,11 @@ int	main(int argc, char **argv)
 ** [V] empty string ""
 ** [V] change everything to linked list
 ** [V] pa <> pb
+*/
+
+/* 
+** checker uses save_input, swaps, pushes and rotates located in ./push_swap_functions
+** also uses lst_funs
 */
 
 // if (stack_a)

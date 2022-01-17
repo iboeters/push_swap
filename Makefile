@@ -1,8 +1,8 @@
-NAME1 = push_swap
+NAME = push_swap
 
-NAME2 = checker
+NAMEB = checker
 
-SRC1 =	./get_next_line/get_next_line.c\
+SRC =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\
 		./push_swap_files/save_input.c\
 		./push_swap_files/lst_funs.c\
@@ -16,7 +16,7 @@ SRC1 =	./get_next_line/get_next_line.c\
 		./push_swap_files/uno.c\
 		./push_swap_files/pre_sorting.c
 
-SRC2 =	./get_next_line/get_next_line.c\
+SRCB =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\
 		./push_swap_files/swaps.c\
 		./push_swap_files/pushes.c\
@@ -27,13 +27,13 @@ SRC2 =	./get_next_line/get_next_line.c\
 		./checker_files/checker.c\
 		./checker_files/save_instructions.c
 
-OBJ1 = $(SRC1:.c=.o)
+OBJ = $(SRC:.c=.o)
 
-OBJ2 = $(SRC2:.c=.o)
+OBJB = $(SRCB:.c=.o)
 
-INC1 = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h 
+INC = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h 
 
-INC2 = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h
+INCB = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -41,28 +41,31 @@ ifdef DEBUG
 FLAGS += -fsanitize=address -fno-omit-frame-pointer -g
 endif
 
-all: $(NAME1) $(NAME2)
+all: $(NAME) $(NAMEB)
 
-$(NAME1): $(OBJ1)
+$(NAME): $(OBJ)
 	@make -C ./libft
 	@make bonus -C ./libft
 	@cp ./libft/libft.a .
-	gcc $(FLAGS) $(INC1) ${OBJ1} libft.a -o ${NAME1}
+	gcc $(FLAGS) $(INC) ${OBJ} libft.a -o ${NAME}
 
-$(NAME2): $(OBJ2)
-	gcc $(FLAGS) $(INC2) ${OBJ2} libft.a -o ${NAME2}
+bonus: $(NAMEB)
+
+$(NAMEB): $(OBJB)
+	@make -C ./libft
+	@make bonus -C ./libft
+	@cp ./libft/libft.a .
+	gcc $(FLAGS) $(INCB) ${OBJB} libft.a -o ${NAMEB}
 
 clean:
 	@make clean -C ./libft
-	rm -f $(OBJ1)
-	rm -f $(OBJ2)
+	rm -f $(OBJ)
+	rm -f $(OBJB)
 
 fclean:	clean
 	rm -f libft/libft.a
 	rm -f libft.a
-	rm -f $(NAME1)
-	rm -f $(NAME2)
-
-bonus: all
+	rm -f $(NAME)
+	rm -f $(NAMEB)
 
 re: fclean all
