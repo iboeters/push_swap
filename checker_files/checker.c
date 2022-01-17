@@ -1,5 +1,17 @@
 #include "checker.h"
 
+/* to do:
+** [V] error with duplicate arguments
+** [V] empty string ""
+** [V] change everything to linked list
+** [V] pa <> pb
+*/
+
+/* 
+** checker uses save_input, swaps, pushes and rotates located in ./push_swap_functions
+** also uses lst_funs
+*/
+
 int	ret_and_free(t_lst **stack_a, t_lst **stack_b, t_lst **input)
 {
 	lstclear(input, free);
@@ -74,17 +86,6 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-/* to do:
-** [V] error with duplicate arguments
-** [V] empty string ""
-** [V] change everything to linked list
-** [V] pa <> pb
-*/
-
-/* 
-** checker uses save_input, swaps, pushes and rotates located in ./push_swap_functions
-** also uses lst_funs
-*/
 
 // if (stack_a)
 // {

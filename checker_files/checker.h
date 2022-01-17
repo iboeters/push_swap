@@ -3,7 +3,7 @@
 
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
-# include "../checker_files/checker.h"
+// # include "../push_swap_files/push_swap.h"
 # include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>

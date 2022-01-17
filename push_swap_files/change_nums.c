@@ -22,7 +22,7 @@ int    change_stack(int *arr, t_lst *stack_a, const int len)
 	}
 }
 
-void    swap_arr(int *arr, int j)
+void    swap_num(int *arr, int j)
 {
     int tmp;
 
@@ -48,7 +48,7 @@ void    bubble_sort_arr(int *arr, int len)
         {
             if (arr[j] > arr[j + 1])
             {
-                swap_arr(arr, j);
+                swap_num(arr, j);
 				swapped = 1;
             }
             j++;
