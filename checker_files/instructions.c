@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   instructions.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/05/03 12:37:40 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/25 21:19:44 by iboeters      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "checker.h"
 
 int	ft_strcmp(const char *str, const char *str2)
@@ -23,7 +11,7 @@ int	ft_strcmp(const char *str, const char *str2)
 	}
 	if (str[i] == '\0' && str2[i] == '\0')
 		return (0);
-	return (1);
+	return (str[i] - str2[i]);
 }
 
 int	valid_instructions(t_lst *input)
@@ -48,22 +36,27 @@ int	valid_instructions(t_lst *input)
 	return (0);
 }
 
-int	instructions(t_lst **input, t_lst **stack_a, t_lst **stack_b)
+int	instructions(t_lst *input, t_lst **stack_a, t_lst **stack_b)
 {
-	if (valid_instructions(*input) == 1)
+	if (valid_instructions(input) == 1)
 	{
-		write(2, "Error\n", 7);
+		write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
 		return (1);
 	}
-	while (*input)
+	while (input)
 	{
-		if (*((char *)((*input)->content)) == 's')
-			swaps((*input)->content, stack_a, stack_b, 0);
-		else if (*((char *)((*input)->content)) == 'p')
-			pushes((*input)->content, stack_a, stack_b, 0);
-		else if (*((char *)((*input)->content)) == 'r')
-			rotates((*input)->content, stack_a, stack_b, 0);
-		*input = (*input)->next;
+		// printf("action= [%s]\n", (char *)input->content);
+		if (*((char *)(input->content)) == 's')
+			swaps(input->content, stack_a, stack_b, 0);
+		else if (*((char *)(input->content)) == 'p')
+			pushes(input->content, stack_a, stack_b, 0);
+		else if (*((char *)(input->content)) == 'r')
+			rotates(input->content, stack_a, stack_b, 0);
+		// printf("stack_a:\n");
+		// lstiter(*stack_a, print_lst_num);
+		// printf("stack_b:\n");
+		// lstiter(*stack_b, print_lst_num);
+		input = input->next;
 	}
 	return (0);
 }

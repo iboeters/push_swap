@@ -1,46 +1,49 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/05/02 19:11:10 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/24 13:41:19 by iboeters      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
+
+// ARG="0 6 2 4"
+// ./push_swap $ARG
+// ./push_swap $ARG | ./checker $ARG
+// ./push_swap $ARG | wc -l
+
+// wc = word count
+// wc -c <filename> prints the byte count
+// wc -l <filename> prints the line count
+// wc -m <filename> prints the character count
+// wc -w <filename> prints the word count
+// wc -L <filename> prints the length of the longest line (GNU extension)
 
 void	print_lst_num(void *num)
 {
 	printf("%i\n", *((int *)num));
 }
 
+int free_and_ret(t_lst **stack_a, t_lst **stack_b, int ret)
+{
+	lstclear(stack_a, free);
+	lstclear(stack_b, free);
+	return (ret);
+}
+
 int	main(int argc, char **argv)
 {
 	t_lst	*stack_a;
 	t_lst	*stack_b;
-	t_lst	*output;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	output = NULL;
-	if (argc <= 1)
+	if (argc == 1)
 		return (1);
 	if (save_input(argc, argv, &stack_a) == 1)
-		return (1);
-	if (algo_1(&output, &stack_a, &stack_b) == 1)
-		return (1);
-	// if (stack_a)
-	// {
-	// 	printf("stack_a:\n");
-	// 	lstiter(stack_a, print_lst_num);
-	// }
-	// if (stack_b)
-	// {
-	// 	printf("stack_b:\n");
-	// 	lstiter(stack_b, print_lst_num);
-	// }
+		return (free_and_ret(&stack_a, &stack_b, 1));
+	if (change_nums(stack_a) == 1)
+		return (free_and_ret(&stack_a, &stack_b, 1));
+	if (algo_1(&stack_a, &stack_b) == 1)
+		return (free_and_ret(&stack_a, &stack_b, 1));
+	lstclear(&stack_a, free);
+	lstclear(&stack_b, free);
 	return (0);
 }
+
+// to do:
+// [ ] less than 4 nums
+// check push_swap from save_input on

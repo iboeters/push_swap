@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   swaps.c                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/05/03 20:20:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/06/24 14:05:24 by iboeters      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 void	swap(t_lst **stack, char ab, int print)
@@ -38,10 +26,12 @@ void	swap(t_lst **stack, char ab, int print)
 
 void	ss(t_lst **stack_a, t_lst **stack_b, int print)
 {
+	if (print)
+		printf("ss\n");
 	if (lstsize(*stack_a) >= 2)
-		swap(stack_a, 'a', print);
+		swap(stack_a, 'a', 0);
 	if (lstsize(*stack_b) >= 2)
-		swap(stack_b, 'b', print);
+		swap(stack_b, 'b', 0);
 }
 
 void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b, int print)
