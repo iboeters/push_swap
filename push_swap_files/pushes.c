@@ -15,6 +15,12 @@ void	push(t_lst **stack_1, t_lst **stack_2, char ab, int print)
 		(*stack_2)->prev = last;
 }
 
+void	push_num(t_lst **stack_1, t_lst **stack_2, char ab, int print)
+{
+	*(int *)(*stack_2)->content = *(int *)(*stack_2)->content * -1;
+	push(stack_1, stack_2, ab, print);
+}
+
 void	pushes(char *instruction, t_lst **stack_a, t_lst **stack_b, int print)
 {
 	if (instruction[1] == 'a' && lstsize(*stack_b) >= 1)

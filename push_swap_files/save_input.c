@@ -49,6 +49,7 @@ int	save_input(int argc, char **argv, t_lst **stack_a)
 
 	error = 0;
 	i = 1;
+	// printf("%ld\n", sysconf(_SC_ARG_MAX));
 	while (error == 0 && argv[i])
 	{
 		num = (int *)malloc(sizeof(int) * 1);
