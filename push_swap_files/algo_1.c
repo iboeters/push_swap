@@ -4,7 +4,7 @@ int		low_closest(int low_index, int high_index, int len)
 {
 	int path_low;
 	int	path_high;
-	
+
 	path_low = low_index;
 	if (len - low_index < path_low)
 		path_low = len - low_index;
@@ -35,6 +35,11 @@ void	push_first(t_lst **stack_1, t_lst **stack_2, int first_index, int *second_i
 		{
 			reverse_rotate(stack_1, ab, 1);
 			(*second_index) = ((*second_index) + 1) % len;
+			// printf("i[%d]lf[%d]-----------\n", i, len - first_index);
+			// lstiter(*stack_1, print_lst_num);
+			// printf("-----------\n");
+			// lstiter(*stack_2, print_lst_num);
+			// printf("-----------\n\n");
 			i++;
 		}
 		push(stack_2, stack_1, other, 1);
@@ -42,6 +47,12 @@ void	push_first(t_lst **stack_1, t_lst **stack_2, int first_index, int *second_i
 		while (j < i)
 		{
 			rotate(stack_1, ab, 1);
+			// printf("j[%d]i[%d]-----------\n", j, i);
+			// printf("a-----------\n");
+			// lstiter(*stack_1, print_lst_num);
+			// printf("-----------\n");
+			// lstiter(*stack_2, print_lst_num);
+			// printf("-----------\n\n");
 			(*second_index)--;
 			if ((*second_index) == -1)
 				(*second_index) = len - 2;
@@ -53,6 +64,11 @@ void	push_first(t_lst **stack_1, t_lst **stack_2, int first_index, int *second_i
 		while (i < first_index)
 		{
 			rotate(stack_1, ab, 1);
+			// printf("i[%d]f[%d]-----------\n", i, first_index);
+			// lstiter(*stack_1, print_lst_num);
+			// printf("-----------\n");
+			// lstiter(*stack_2, print_lst_num);
+			// printf("-----------\n\n");
 			(*second_index)--;
 			if ((*second_index) == -1)
 				(*second_index) = len - 1;
@@ -62,8 +78,12 @@ void	push_first(t_lst **stack_1, t_lst **stack_2, int first_index, int *second_i
 		(*second_index)--;
 		while (j < i)
 		{
-			// printf("joehoe\n");
 			reverse_rotate(stack_1, ab, 1);
+			// printf("j[%d]i[%d]-----------\n", j, i);
+			// lstiter(*stack_1, print_lst_num);
+			// printf("-----------\n");
+			// lstiter(*stack_2, print_lst_num);
+			// printf("-----------\n\n");
 			(*second_index) = ((*second_index) + 1) % (len - 1);
 			j++;
 		}
@@ -89,12 +109,22 @@ void	push_second(t_lst **stack_1, t_lst **stack_2, int second_index, const int l
 		while (i < len - second_index) // 0 < (3 - 2)
 		{
 			reverse_rotate(stack_1, ab, 1);
+			// printf("i[%d]ls[%d]-----------\n", i, len - second_index);
+			// lstiter(*stack_1, print_lst_num);
+			// printf("-----------\n");
+			// lstiter(*stack_2, print_lst_num);
+			// printf("-----------\n\n");
 			i++;
 		}
 		push(stack_2, stack_1, other, 1);
 		while (j < i)
 		{
 			rotate(stack_1, ab, 1);
+			// printf("j[%d]i[%d]-----------\n", j, i);
+			// lstiter(*stack_1, print_lst_num);
+			// printf("-----------\n");
+			// lstiter(*stack_2, print_lst_num);
+			// printf("-----------\n\n");
 			j++;
 		}
 	}
@@ -103,50 +133,25 @@ void	push_second(t_lst **stack_1, t_lst **stack_2, int second_index, const int l
 		while (i < second_index)
 		{
 			rotate(stack_1, ab, 1);
+			// printf("i[%d]s[%d]-----------\n", i, second_index);
+			// lstiter(*stack_1, print_lst_num);
+			// printf("-----------\n");
+			// lstiter(*stack_2, print_lst_num);
+			// printf("-----------\n\n");
 			i++;
 		}
 		push(stack_2, stack_1, other, 1);
 		while (j < i)
 		{
 			reverse_rotate(stack_1, ab, 1);
+			// printf("j[%d]i[%d]-----------\n", j, i);
+			// lstiter(*stack_1, print_lst_num);
+			// printf("-----------\n");
+			// lstiter(*stack_2, print_lst_num);
+			// printf("-----------\n\n");
 			j++;
 		}
 	}
-}
-
-int	push_low_high(t_lst **stack_1, t_lst **stack_2, int low_index, int high_index, int len, char ab)
-{
-	// printf("%i|%i|%i\n", len, low_index, high_index);
-	if (ab == 'a' && low_index == 0 && high_index == len - 1)
-		return (0);
-	else if (ab == 'b' && low_index == len - 1 && high_index == 0)
-		return (0);
-	else if (ab == 'a' && len == 2)
-	{
-		if (low_index > high_index)
-			swap(stack_1, ab, 1);
-		return (0);
-	}
-	else if (ab == 'b' && len == 2)
-	{
-		if (high_index > low_index)
-			swap(stack_1, ab, 1);
-		return (0);
-	}
-
-	if (low_closest(low_index, high_index, len))
-	{
-		push_first(stack_1, stack_2, low_index, &high_index, len, ab);
-		len--;
-		push_second(stack_1, stack_2, high_index, len, ab);
-	}
-	else
-	{
-		push_first(stack_1, stack_2, high_index, &low_index, len, ab);
-		len--;
-		push_second(stack_1, stack_2, low_index, len, ab);
-	}
-	return (1);
 }
 
 unsigned int	get_index(t_lst **stack_1, unsigned int num)
@@ -170,15 +175,67 @@ unsigned int	get_index(t_lst **stack_1, unsigned int num)
 	return (0);
 }
 
+int	push_low_high_b(t_lst **stack_1, t_lst **stack_2, int len_tot, int len, char ab)
+{
+	int low_index;
+	int high_index;
+
+	// printf("%i|%i|%i\n", len, low_index, high_index);
+	low_index = get_index(stack_1, 0);
+	high_index = get_index(stack_1, len_tot / 2 - 1);
+	if (low_index == len - 1 && high_index == 0)
+		return (0);
+	if (low_closest(low_index, high_index, len))
+	{
+		push_first(stack_1, stack_2, low_index, &high_index, len, ab);
+		len--;
+		push_second(stack_1, stack_2, high_index, len, ab);
+	}
+	else
+	{
+		push_first(stack_1, stack_2, high_index, &low_index, len, ab);
+		len--;
+		push_second(stack_1, stack_2, low_index, len, ab);
+	}
+	return (1);
+}
+
+int	push_low_high_a(t_lst **stack_1, t_lst **stack_2, int len_tot, int len, char ab)
+{
+	int low_index;
+	int high_index;
+
+	low_index = get_index(stack_1, len_tot / 2);
+	high_index = get_index(stack_1, len_tot - 1);
+	// printf("%i|%i|%i\n", len, low_index, high_index);
+	if (low_index == 0 && high_index == len - 1)
+		return (0);
+	if (low_closest(low_index, high_index, len))
+	{
+		push_first(stack_1, stack_2, low_index, &high_index, len, ab);
+		len--;
+		push_second(stack_1, stack_2, high_index, len, ab);
+	}
+	else
+	{
+		push_first(stack_1, stack_2, high_index, &low_index, len, ab);
+		len--;
+		push_second(stack_1, stack_2, low_index, len, ab);
+	}
+	return (1);
+}
+
+
 int	algo_1(t_lst **stack_a, t_lst **stack_b)
 {
 	int	len;
 	int	ret;
 
 	len = lstsize(*stack_a);
+	if (sorted(*stack_a)) // if already sorted-> return
+		return (0);
 	pre_sorting(stack_a, stack_b, len);
-	ret = push_low_high(stack_a, stack_b, get_index(stack_a, len / 2),
-	get_index(stack_a, len - 1), lstsize(*stack_a), 'a');
+	ret = push_low_high_a(stack_a, stack_b, len, lstsize(*stack_a), 'a');
 	if (*stack_b && *(int *)((*stack_b)->content) > *(int *)(((*stack_b)->next)->content) && ret)
 		swap(stack_b, 'b', 1);
 	if (*stack_b && ret)
@@ -187,8 +244,14 @@ int	algo_1(t_lst **stack_a, t_lst **stack_b)
 		push(stack_a, stack_b, 'a', 1);
 		rotate(stack_a, 'a', 1);
 	}
-	ret = push_low_high(stack_b, stack_a, get_index(stack_b, 0),
-	get_index(stack_b, len / 2 - 1), lstsize(*stack_b), 'b');
+	// printf("-----------\n");
+	// lstiter(*stack_a, print_lst_num);
+	// printf("-----------\n");
+	// lstiter(*stack_b, print_lst_num);
+	// printf("-----------\n");
+	// printf("index highest b:%d\n", get_index(stack_b, len / 2 - 1));
+	// printf("index lowest b:%d|%d\n", get_index(stack_b, 0), lstsize(*stack_b));
+	ret = push_low_high_b(stack_b, stack_a, len, lstsize(*stack_b), 'b');
 	if (*stack_a && *(int *)((*stack_a)->content) < *(int *)(((*stack_a)->next)->content) && ret)
 		swap(stack_a, 'a', 1);
 	if (*stack_a && ret)

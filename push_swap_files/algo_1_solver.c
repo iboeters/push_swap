@@ -104,6 +104,7 @@ void	algo_1_solver(t_lst **stack_a, t_lst **stack_b, int len)
 	low_b = (*stack_b)->prev;
 	high_b = *stack_b;
 	// printf("low_a=%d, high_a=%d\n", *(int *)low_a->content, *(int *)high_a->content);
+	// printf("low_b=%d, high_b=%d\n", *(int *)low_b->content, *(int *)high_b->content);
 	uno(stack_a, stack_b, low_a, high_a, low_b, high_b, &i, &j);
 	rotate_right(stack_a, low_a, lstsize(*stack_a), 'a');
 	rotate_right(stack_b, high_b, lstsize(*stack_b), 'b');
@@ -112,7 +113,6 @@ void	algo_1_solver(t_lst **stack_a, t_lst **stack_b, int len)
 }
 
 // begin list is lost by looping over list. fix this. swaps 9 couple of times though.
-// discussion lars:
 // swaps are too expensive -> algorithm wont work
 // first sort the whole stack beforehand
 // sort on groups of 3/5/10
@@ -120,12 +120,3 @@ void	algo_1_solver(t_lst **stack_a, t_lst **stack_b, int len)
 // push 10 lowest to b -> sort these
 // push next 10 lowest to b -> sort these
 // push next 10 lowest to b -> sort these
-
-// different groups: <3 >3 >5 >50 >100 >500??
-// for the 500 cases, use the 4 spots to put numbers:
-// 1= upper stack_a (sa)
-// 2= low stack_a (rra)
-// 3= upper stack_b (pb)
-// 4= low stack_b (pb & rrb)
-// push 10 numbers per spot-> solve these -> push next 10 numbers
-// kind of like bucket sort algorithm

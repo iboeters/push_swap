@@ -74,7 +74,7 @@ t_lst	*lstlast(t_lst *lst)
 	return (lst->prev);
 }
 
-t_lst		*lstnew(void *content)
+t_lst	*lstnew(void *content)
 {
 	t_lst *lst;
 

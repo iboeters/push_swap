@@ -113,10 +113,6 @@ int	algo_2(t_lst **stack_a, t_lst **stack_b)
 			i++;
 		}
 	}
-	else
-	{
-		// new algorithm
-	}
 	// lstiter(*stack_a, print_lst_num);	
 	return(0);
 }

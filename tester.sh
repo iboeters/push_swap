@@ -65,6 +65,7 @@ TEST_N=3
 checkin 3 $TEST_N
 checkin 5 $TEST_N
 checkin 10 $TEST_N
-# checkin 50 $TEST_N
-# checkin 100 $TEST_N
-# checkin 500 $TEST_N
+checkin 15 $TEST_N
+checkin 50 $TEST_N
+checkin 100 $TEST_N
+checkin 500 $TEST_N

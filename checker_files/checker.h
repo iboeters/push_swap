@@ -27,7 +27,7 @@ void	lstclear(t_lst **lst, void (*del)(void*));
 void	lstiter(t_lst *lst, void (*f)(void *));
 t_lst	*lstlast(t_lst *lst);
 t_lst	*lstnew(void *content);
-int		lstsize(t_lst *lst);
+ int		lstsize(t_lst *lst);
 int		save_instructions(t_lst **input);
 void	print_lst_str(void *str);
 

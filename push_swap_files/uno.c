@@ -48,6 +48,7 @@ int	check_backwards(t_lst *stack, int low_num, int high_num, char ab, int len)
 		stack = stack->prev;
 		i--;
 	}
+	return (0);
 }
 
 int	check_swap(t_lst *stack, int *i, int low_num, int high_num, char ab)
@@ -131,7 +132,7 @@ void	uno(t_lst **stack_a, t_lst **stack_b, t_lst *low_a, t_lst *high_a, t_lst *l
 	while (!sort_a || !sort_b)
 	{
 		*i = 0;
-        *j = 0;
+		*j = 0;
 		if (is_sorted_front(low_a, high_a, *stack_a, 'a') && is_sorted_back(low_a, 'a'))
 			sort_a = 1;
 		if (is_sorted_front(high_b, low_b, *stack_b, 'b') && is_sorted_back(high_b, 'b'))
