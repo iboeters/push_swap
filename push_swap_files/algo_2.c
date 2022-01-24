@@ -1,17 +1,5 @@
 #include "push_swap.h"
 
-// 2		2		0		0		1		1
-// 1		0		1		2		0		2
-// 0		1		2		1		2		0
-// sa, rra	ra		-		rra sa	sa		rra
-
-// reverse rotate: onderste bovenaan
-
-// pushen naar b -> alle content * -1 doen??
-// nee want max integers; maar we doen wel alles index geven
-// kan dus wel --> returnen als de input size groter is dan een int
-// hoeft niet want max arg!!!
-
 int	sorted(t_lst *stack)
 {
 	int	prev;
@@ -90,16 +78,15 @@ void	half(t_lst **stack_a, t_lst **stack_b, int len)
 	}
 }
 
-int	algo_2(t_lst **stack_a, t_lst **stack_b)
+void	algo_2(t_lst **stack_a, t_lst **stack_b)
 {
 	int	len;
 	int	i;
 
 	i = 0;
-	if (sorted(*stack_a)) // if already sorted-> return
-		return (0);
+	if (sorted(*stack_a))
+		return ;
 	len = lstsize(*stack_a);
-	// printf("len = %d| half = %d\n", len, len / 2);
 	if (len <= 3)
 		solve_three(stack_a, 'a', len);
 	else if (len <= 6)
@@ -113,6 +100,5 @@ int	algo_2(t_lst **stack_a, t_lst **stack_b)
 			i++;
 		}
 	}
-	// lstiter(*stack_a, print_lst_num);	
-	return(0);
+	return ;
 }

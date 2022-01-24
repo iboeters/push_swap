@@ -24,7 +24,7 @@ void	change_stack(int *arr, t_lst *stack_a, const int len)
 
 void	swap_num(int *arr, int j)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = arr[j];
 	arr[j] = arr[j + 1];
@@ -33,9 +33,9 @@ void	swap_num(int *arr, int j)
 
 void	bubble_sort_arr(int *arr, int len)
 {
-	int swapped;
-	int i;
-	int j;
+	int	swapped;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -46,8 +46,8 @@ void	bubble_sort_arr(int *arr, int len)
 		j = 0;
 		while (j < len - 1)
 		{
-		    if (arr[j] > arr[j + 1])
-		    {
+			if (arr[j] > arr[j + 1])
+			{
 				swap_num(arr, j);
 				swapped = 1;
 			}
@@ -59,7 +59,7 @@ void	bubble_sort_arr(int *arr, int len)
 
 void	fill_arr(int *arr, t_lst *stack_a)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (stack_a)
@@ -70,11 +70,11 @@ void	fill_arr(int *arr, t_lst *stack_a)
 	}
 }
 
-int change_nums(t_lst *stack_a)
+int	change_nums(t_lst *stack_a)
 {
-	int len;
-	int *arr;
-	int i;
+	int	len;
+	int	*arr;
+	int	i;
 
 	i = 0;
 	len = lstsize(stack_a);
@@ -83,57 +83,8 @@ int change_nums(t_lst *stack_a)
 		return (1);
 	fill_arr(arr, stack_a);
 	bubble_sort_arr(arr, len);
-	// printf("sortedstack:\n");
-	// lstiter(stack_a, print_lst_num);
-	// printf("arr:\n");
-	// while (i < len)
-	// {
-	//	printf("%d\n", arr[i]);
-	//	i++;
-	// }
 	change_stack(arr, stack_a, len);
-	// printf("newstack:\n");
-	// lstiter(stack_a, print_lst_num);
 	if (arr)
 		free(arr);
-	return (0); // return(0) vergeten --> nog leaks
+	return (0);
 }
-
-// int check_nums(t_lst *stack_a, int i, int *index)
-// {
-// 	while (stack_a)
-// 	{
-// 		printf("%d|%d\n", *(int *)stack_a->content, i);
-// 		if (*(int *)stack_a->content == i)
-// 		{
-// 			*(int *)stack_a->content = *index;
-// 			(*index)++;
-// 			break ;
-// 		}
-// 		stack_a = stack_a->next;
-// 	}
-// }
-
-// int change_nums(t_lst *stack_a)
-// {
-// 	int index;
-// 	int i;
-// 	int len;
-// 	t_lst **begin;
-
-// 	i = 0;
-// 	index = 0;
-// 	begin = &stack_a;
-// 	len = lstsize(stack_a);
-
-// 	while (i < INT_MAX)
-// 	{
-// 		stack_a = *begin;
-// 		check_nums(stack_a, i, &index);
-// 		if (index == len)
-// 			break ;
-// 		i++;
-// 	}
-// 	lstiter(stack_a, print_lst_num);
-// 	return (0);
-// }

@@ -63,12 +63,13 @@ YELLOW='\033[0;33m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
 
-TEST_N=5
+TEST_N=10
 
 checkin 3 $TEST_N
 checkin 5 $TEST_N
 checkin 10 $TEST_N
-checkin 15 $TEST_N
+# checkin 15 $TEST_N
 checkin 50 $TEST_N
+# checkin 60 $TEST_N
 checkin 100 $TEST_N
 checkin 500 $TEST_N
