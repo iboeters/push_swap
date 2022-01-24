@@ -217,14 +217,16 @@ int pre_sorting(t_lst **stack_a, t_lst **stack_b, int len)
 {
 	int groups;
 
-	if (len >= 0 && len < 50)
-		groups = 2;
-	else if (len >= 50 && len < 100)
-		groups = 4;
-	else if (len >= 100 && len < 200)
+	if (len >= 10 && len < 50)
+		groups = 3;
+	else if (len >= 50 && len < 75)
+		groups = 6;
+	else if (len >= 75 && len < 100)
 		groups = 8;
+	else if (len >= 100 && len < 200)
+		groups = 9;
 	else if (len >= 200)
-		groups = 18;
+		groups = 17;
 	if (len > 9)
 	{
 		sort_a_bit_2(stack_a, stack_b, len, groups);

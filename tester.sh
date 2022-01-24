@@ -39,11 +39,14 @@ checkin(){
 			fi
 			if [ $ARR_SIZE -eq 100 ]
 			then
-				echo -e "${PURPLE}MAX ACTIONS=1500 (L700) ${RESET}"
+				echo -e "${PURPLE}MAX ACTIONS=1500${RESET}"
+				echo -e "${PURPLE}1: 1500   2: 1300   3: 1100   4: 900   5: 700${RESET}"
 			fi
 			if [ $ARR_SIZE -eq 500 ]
 			then
-				echo -e "${PURPLE}MAX ACTIONS=11500 (L5500) ${RESET}"
+				echo -e "${PURPLE}MAX ACTIONS=11500${RESET}"
+				echo -e "${PURPLE}1: 11500   2: 10000   3: 8500   4: 7000   5: 5500${RESET}"
+
 			fi
 		fi
 		gen_arr $ARR_SIZE
@@ -60,7 +63,7 @@ YELLOW='\033[0;33m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
 
-TEST_N=3
+TEST_N=5
 
 checkin 3 $TEST_N
 checkin 5 $TEST_N
