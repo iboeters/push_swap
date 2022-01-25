@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   instructions.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/01/25 14:33:51 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:34:09 by iboeters      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 int	ft_strcmp(const char *str, const char *str2)
@@ -45,17 +57,12 @@ int	instructions(t_lst *input, t_lst **stack_a, t_lst **stack_b)
 	}
 	while (input)
 	{
-		// printf("action= [%s]\n", (char *)input->content);
 		if (*((char *)(input->content)) == 's')
 			swaps(input->content, stack_a, stack_b, 0);
 		else if (*((char *)(input->content)) == 'p')
 			pushes(input->content, stack_a, stack_b, 0);
 		else if (*((char *)(input->content)) == 'r')
 			rotates(input->content, stack_a, stack_b, 0);
-		// printf("stack_a:\n");
-		// lstiter(*stack_a, print_lst_num);
-		// printf("stack_b:\n");
-		// lstiter(*stack_b, print_lst_num);
 		input = input->next;
 	}
 	return (0);

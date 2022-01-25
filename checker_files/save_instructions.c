@@ -1,10 +1,16 @@
-#include "checker.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   save_instructions.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/01/25 14:34:45 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:34:52 by iboeters      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-// can be deleted if not used
-void	print_lst_str(void *str)
-{
-	printf("%s\n", (char *)str);
-}
+#include "checker.h"
 
 int	save_instructions(t_lst **input)
 {

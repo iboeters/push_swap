@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/14 18:20:54 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/16 12:16:19 by iboeters      ########   odam.nl         */
+/*   Created: 2019/11/14 18:20:54 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:37:53 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s)

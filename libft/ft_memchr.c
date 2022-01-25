@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 11:00:22 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/27 10:25:35 by iboeters      ########   odam.nl         */
+/*   Created: 2019/10/30 11:00:22 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:37:29 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	*str;
 	size_t			i;
 
-	str = (unsigned char*)s;
+	str = (unsigned char *)s;
 	i = 0;
 	while (i < n)
 	{

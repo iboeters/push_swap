@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/15 17:29:04 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/15 17:37:42 by iboeters      ########   odam.nl         */
+/*   Created: 2019/11/15 17:29:04 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:37:45 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s)

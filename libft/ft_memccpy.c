@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 13:53:34 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/25 13:44:49 by iboeters      ########   odam.nl         */
+/*   Created: 2019/10/29 13:53:34 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:37:22 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	size_t			i;
 
 	i = 0;
-	str = (unsigned char*)src;
-	str2 = (unsigned char*)dst;
+	str = (unsigned char *)src;
+	str2 = (unsigned char *)dst;
 	while (i < n)
 	{
 		if (str[i] == (unsigned char)c)

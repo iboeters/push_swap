@@ -1,9 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/01/25 14:35:18 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:35:20 by iboeters      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	print_lst_num(void *num)
-{
-	printf("%i\n", *((int *)num));
-}
+#include "push_swap.h"
 
 int	free_and_ret(t_lst **stack_a, t_lst **stack_b, int ret)
 {
@@ -33,6 +40,5 @@ int	main(int argc, char **argv)
 		algo_2(&stack_a, &stack_b);
 	lstclear(&stack_a, free);
 	lstclear(&stack_b, free);
-	// while (1){}
 	return (0);
 }

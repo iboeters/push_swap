@@ -5,16 +5,16 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/05 14:00:46 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/25 12:45:44 by iboeters      ########   odam.nl         */
+/*   Created: 2019/11/05 14:00:46 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:38:44 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *str, const char *str2, size_t n)
+int	ft_strncmp(const char *str, const char *str2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (n == 0)

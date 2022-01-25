@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/02 13:05:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 14:37:04 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 14:53:07 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	gnl_strlen(const char *s)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	while (s[len] != '\0')
@@ -34,7 +34,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 	i = 0;
 	len1 = gnl_strlen(s1);
 	len2 = gnl_strlen(s2);
-	str = (char*)malloc(sizeof(char) * (len1 + len2 + 1));
+	str = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!str)
 		return (0);
 	while (i < len1)
@@ -52,7 +52,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-int		gnl_strchr(const char *s, int c)
+int	gnl_strchr(const char *s, int c)
 {
 	char	*str;
 	char	a;
@@ -85,7 +85,7 @@ void	*gnl_calloc(size_t count, size_t size)
 	str = (void *)malloc(count * size);
 	if (!str)
 		return (0);
-	str2 = (char*)str;
+	str2 = (char *)str;
 	while (i < count * size)
 	{
 		str2[i] = '\0';
@@ -107,9 +107,9 @@ char	*gnl_substr(char *s, unsigned int start, size_t len)
 	if (start > len2)
 		return (gnl_calloc(1, sizeof(char)));
 	if (start + len > len2)
-		str = (char*)malloc(sizeof(char) * (len2 - start) + 2);
+		str = (char *)malloc(sizeof(char) * (len2 - start) + 2);
 	else
-		str = (char*)malloc(sizeof(char) * (len + 1));
+		str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (0);
 	while (i < len && s[i] != '\0')

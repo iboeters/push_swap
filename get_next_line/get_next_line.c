@@ -6,15 +6,15 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 16:17:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/13 17:28:06 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 14:52:58 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int		read_fd(char **buf, int fd)
+static int	read_fd(char **buf, int fd)
 {
-	int ret;
+	int	ret;
 
 	*buf = gnl_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!*buf)
@@ -23,7 +23,7 @@ static int		read_fd(char **buf, int fd)
 	return (ret);
 }
 
-static int		return_value(int ret, int malloc_check, char **buf)
+static int	return_value(int ret, int malloc_check, char **buf)
 {
 	if (ret == -1 || malloc_check == -1)
 	{
@@ -47,7 +47,7 @@ static int		return_value(int ret, int malloc_check, char **buf)
 		return (1);
 }
 
-static int		join(char **line, char **buf)
+static int	join(char **line, char **buf)
 {
 	*line = gnl_strjoin(*line, *buf);
 	if (*buf)
@@ -58,7 +58,7 @@ static int		join(char **line, char **buf)
 	return (0);
 }
 
-static int		join_and_save(char **line, char **buf)
+static int	join_and_save(char **line, char **buf)
 {
 	int		i;
 	char	*tmp;
@@ -81,11 +81,11 @@ static int		join_and_save(char **line, char **buf)
 	return (0);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	static char				*buf[4021];
-	int						ret;
-	int						malloc_check;
+	static char	*buf[4021];
+	int			ret;
+	int			malloc_check;
 
 	ret = 1;
 	malloc_check = 0;

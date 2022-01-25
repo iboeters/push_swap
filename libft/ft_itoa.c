@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/13 12:11:28 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/15 17:37:42 by iboeters      ########   odam.nl         */
+/*   Created: 2019/11/13 12:11:28 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:36:45 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	ft_negative(char *str, int n)
 	return (n);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		stop;
 	int		len;

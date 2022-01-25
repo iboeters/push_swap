@@ -5,14 +5,14 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/13 09:36:14 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/21 10:41:25 by iboeters      ########   odam.nl         */
+/*   Created: 2019/11/13 09:36:14 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:53:38 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ static const char	*begin_word(char const *s, char c)
 	return (s);
 }
 
-static int			len_word(const char *s, char c)
+static int	len_word(const char *s, char c)
 {
 	int	i;
 
@@ -48,9 +48,9 @@ static int			len_word(const char *s, char c)
 	return (i);
 }
 
-static void			ft_free(char **split)
+static void	ft_free(char **split)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (split[i])
@@ -61,7 +61,7 @@ static void			ft_free(char **split)
 	free(split);
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**split;
 	int		n_words;
@@ -72,7 +72,7 @@ char				**ft_split(char const *s, char c)
 	if (s == 0)
 		return (0);
 	n_words = count_words(s, c);
-	split = (char**)malloc((n_words + 1) * sizeof(char*));
+	split = (char **)malloc((n_words + 1) * sizeof(char *));
 	if (!split)
 		return (0);
 	while (i < n_words)

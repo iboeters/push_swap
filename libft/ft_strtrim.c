@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 15:13:59 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/21 10:10:54 by iboeters      ########   odam.nl         */
+/*   Created: 2019/11/07 15:13:59 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:53:48 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static size_t	find_end(const char *s1, const char *set)
 	return (point2);
 }
 
-char			*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	size_t	point1;
 	size_t	point2;
@@ -83,7 +83,7 @@ char			*ft_strtrim(const char *s1, const char *set)
 	}
 	else
 		point2 = find_end(s1, set);
-	trim = (char*)malloc(sizeof(char) * (point2 - point1 + 2));
+	trim = (char *)malloc(sizeof(char) * (point2 - point1 + 2));
 	if (!trim)
 		return (0);
 	ft_memcpy(trim, s1 + point1, point2 - point1 + 1);

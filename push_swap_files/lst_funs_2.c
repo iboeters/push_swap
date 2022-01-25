@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_bzero.c                                         :+:    :+:            */
+/*   lst_funs_2.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 11:47:16 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:53:12 by iboeters      ########   odam.nl         */
+/*   Created: 2022/01/25 14:40:37 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:41:14 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_bzero(void *s, size_t n)
+t_lst	*lstnew(void *content)
 {
-	char	*str;
-	size_t	i;
+	t_lst	*lst;
 
-	i = 0;
-	str = (char *)s;
-	if (n == 0)
-		return ;
-	while (i < n)
+	lst = (t_lst *)malloc(sizeof(t_lst));
+	if (!lst)
+		return (0);
+	lst->content = content;
+	lst->next = NULL;
+	lst->prev = NULL;
+	return (lst);
+}
+
+int	lstsize(t_lst *lst)
+{
+	int	len;
+
+	len = 0;
+	if (!lst)
+		return (0);
+	while (lst)
 	{
-		str[i] = '\0';
-		i++;
+		len++;
+		lst = lst->next;
 	}
+	return (len);
 }

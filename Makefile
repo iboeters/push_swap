@@ -5,7 +5,7 @@ NAMEB = checker
 SRC =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\
 		./push_swap_files/save_input.c\
-		./push_swap_files/lst_funs.c\
+		./push_swap_files/lst_funs_2.c\
 		./push_swap_files/pushes.c\
 		./push_swap_files/rotates.c\
 		./push_swap_files/swaps.c\
@@ -13,7 +13,9 @@ SRC =	./get_next_line/get_next_line.c\
 		./push_swap_files/change_nums.c\
 		./push_swap_files/algo_2.c\
 		./push_swap_files/pre_sorting.c\
-		./push_swap_files/algo_3.c
+		./push_swap_files/algo_3.c\
+		./push_swap_files/check_push.c\
+		./push_swap_files/lst_funs.c
 
 SRCB =	./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c\
@@ -21,6 +23,7 @@ SRCB =	./get_next_line/get_next_line.c\
 		./push_swap_files/pushes.c\
 		./push_swap_files/rotates.c\
 		./push_swap_files/lst_funs.c\
+		./push_swap_files/lst_funs_2.c\
 		./push_swap_files/save_input.c\
 		./checker_files/instructions.c\
 		./checker_files/checker.c\
@@ -30,7 +33,7 @@ OBJ = $(SRC:.c=.o)
 
 OBJB = $(SRCB:.c=.o)
 
-INC = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h 
+INC = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h
 
 INCB = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h
 

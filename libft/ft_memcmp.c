@@ -5,14 +5,14 @@
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 12:06:07 by iboeters       #+#    #+#                */
-/*   Updated: 2019/11/25 14:09:22 by iboeters      ########   odam.nl         */
+/*   Created: 2019/10/30 12:06:07 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 14:53:28 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char	*str;
 	const unsigned char	*str2;

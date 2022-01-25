@@ -1,13 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   save_input.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/01/25 14:54:13 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 15:16:39 by iboeters      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	atoi_ret(const char *str, int i, int sign, unsigned int r, int *error)
+static int	error_return(void)
+{
+	write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
+	return (1);
+}
+
+static int	return_value(int error)
+{
+	if (error == 1)
+		return (error_return());
+	return (0);
+}
+
+int	atoi_ret(const char *str, int i, unsigned int r, int *error)
 {
 	if (str[i] != '\0' || ft_strlen(str) == 0)
 	{
 		*error = 1;
 		return (-1);
 	}
-	return ((int)sign * r);
+	return (r);
 }
 
 int	atoi_check(const char *str, int *error)
@@ -36,7 +61,7 @@ int	atoi_check(const char *str, int *error)
 		}
 		i++;
 	}
-	return (atoi_ret(str, i, sign, r, error));
+	return (sign * atoi_ret(str, i, r, error));
 }
 
 int	save_input(int argc, char **argv, t_lst **stack_a)
@@ -60,18 +85,10 @@ int	save_input(int argc, char **argv, t_lst **stack_a)
 		while (last != tmp_addr)
 		{
 			if (*(int *)last->content == *num)
-			{
-				write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
-				return (1);
-			}
+				return (error_return());
 			last = last->prev;
 		}
 		i++;
 	}
-	if (error == 1)
-	{
-		write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
-		return (1);
-	}
-	return (0);
+	return (return_value(error));
 }
