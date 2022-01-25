@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:54:03 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:54:04 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 16:56:38 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	push(t_lst **stack_1, t_lst **stack_2, char ab, int print)
 {

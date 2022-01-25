@@ -1,5 +1,5 @@
 #!/bin/bash
-make
+make bonus
 
 gen_arr(){
 	if [ $1 -le 0 ]; then
@@ -59,17 +59,61 @@ checkin(){
 	done
 }
 
+edgecases(){
+	ARG=""
+	echo "empty string"
+	./push_swap $ARG | ./checker $ARG
+	echo -ne "${YELLOW}n="
+	./push_swap $ARG | wc -l
+	echo -e "${RESET}"
+
+	ARG="2147483647 3 1"
+	echo $ARG
+	./push_swap $ARG | ./checker $ARG
+	echo -ne "${YELLOW}n="
+	./push_swap $ARG | wc -l
+	echo -e "${RESET}"
+
+	ARG="2147483648 3 1"
+	echo $ARG
+	./push_swap $ARG | ./checker $ARG
+	echo -ne "${YELLOW}n="
+	./push_swap $ARG | wc -l
+	echo -e "${RESET}"
+
+	ARG="-2147483648 3 1"
+	echo $ARG
+	./push_swap $ARG | ./checker $ARG
+	echo -ne "${YELLOW}n="
+	./push_swap $ARG | wc -l
+	echo -e "${RESET}"
+
+	ARG="-2147483649 3 1"
+	echo $ARG
+	./push_swap $ARG | ./checker $ARG
+	echo -ne "${YELLOW}n="
+	./push_swap $ARG | wc -l
+	echo -e "${RESET}"
+
+	ARG="   "
+	echo $ARG
+	./push_swap $ARG | ./checker $ARG
+	echo -ne "${YELLOW}n="
+	./push_swap $ARG | wc -l
+	echo -e "${RESET}"
+}
+
 YELLOW='\033[0;33m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
 
-TEST_N=20
+TEST_N=1
 
-checkin 3 $TEST_N
-checkin 5 $TEST_N
-checkin 10 $TEST_N
-checkin 15 $TEST_N
-checkin 50 $TEST_N
-# checkin 60 $TEST_N
-checkin 100 $TEST_N
-checkin 500 3
+# checkin 3 $TEST_N
+# checkin 5 $TEST_N
+# checkin 10 $TEST_N
+# checkin 15 $TEST_N
+# checkin 50 $TEST_N
+# checkin 100 $TEST_N
+# checkin 500 $TEST_N
+edgecases

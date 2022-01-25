@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 16:17:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:52:58 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 18:28:47 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 static int	read_fd(char **buf, int fd)
 {
@@ -72,8 +72,10 @@ static int	join_and_save(char **line, char **buf)
 		return (-1);
 	*line = gnl_strjoin(*line, end);
 	free(end);
+	if (!*line)
+		return (-1);
 	tmp = gnl_substr(*buf, i + 1, gnl_strlen(*buf) - i);
-	if (!tmp || !*line)
+	if (!tmp)
 		return (-1);
 	if (*buf)
 		free(*buf);

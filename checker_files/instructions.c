@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:33:51 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:34:09 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 16:56:23 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../includes/checker.h"
 
 int	ft_strcmp(const char *str, const char *str2)
 {

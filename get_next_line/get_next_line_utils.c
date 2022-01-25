@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/02 13:05:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:53:07 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 18:30:54 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 size_t	gnl_strlen(const char *s)
 {

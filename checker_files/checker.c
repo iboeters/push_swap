@@ -6,17 +6,21 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:29:24 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:35:02 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 18:20:04 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../includes/checker.h"
 
 int	ret_and_free(t_lst **stack_a, t_lst **stack_b, t_lst **input)
 {
-	lstclear(input, free);
-	lstclear(stack_a, free);
-	lstclear(stack_b, free);
+	if (*input)
+		lstclear(input, free);
+	if (*stack_a)
+		lstclear(stack_a, free);
+	if (*stack_b)
+		lstclear(stack_b, free);
+	while(1){}
 	return (1);
 }
 

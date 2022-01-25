@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:23:33 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:24:14 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 16:56:38 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	check_backwards(t_lst *stack_a, int len_tot, float size)
 {

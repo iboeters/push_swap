@@ -33,9 +33,9 @@ OBJ = $(SRC:.c=.o)
 
 OBJB = $(SRCB:.c=.o)
 
-INC = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h
+INC = -I ./libft/libft.h -I ./includes/get_next_line.h -I ./includes/checker.h
 
-INCB = -I ./libft/libft.h -I ./get_next_line/get_next_line.h -I ./checker_files/checker.h
+INCB = -I ./libft/libft.h -I ./includes/get_next_line.h -I ./includes/checker.h
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -43,7 +43,7 @@ ifdef DEBUG
 FLAGS += -fsanitize=address -fno-omit-frame-pointer -g
 endif
 
-all: $(NAME) $(NAMEB)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C ./libft
@@ -51,12 +51,9 @@ $(NAME): $(OBJ)
 	@cp ./libft/libft.a .
 	gcc $(FLAGS) $(INC) ${OBJ} libft.a -o ${NAME}
 
-bonus: $(NAMEB)
+bonus: $(NAME) $(NAMEB)
 
 $(NAMEB): $(OBJB)
-	@make -C ./libft
-	@make bonus -C ./libft
-	@cp ./libft/libft.a .
 	gcc $(FLAGS) $(INCB) ${OBJB} libft.a -o ${NAMEB}
 
 clean:

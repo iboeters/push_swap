@@ -6,16 +6,18 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:35:18 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:35:20 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 18:20:56 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	free_and_ret(t_lst **stack_a, t_lst **stack_b, int ret)
 {
-	lstclear(stack_a, free);
-	lstclear(stack_b, free);
+	if (*stack_a)
+		lstclear(stack_a, free);
+	if (*stack_b)
+		lstclear(stack_b, free);
 	return (ret);
 }
 
@@ -38,7 +40,9 @@ int	main(int argc, char **argv)
 		algo_3(&stack_a, &stack_b, len);
 	else
 		algo_2(&stack_a, &stack_b);
-	lstclear(&stack_a, free);
-	lstclear(&stack_b, free);
+	if (stack_a)
+		lstclear(&stack_a, free);
+	if (stack_b)
+		lstclear(&stack_b, free);
 	return (0);
 }

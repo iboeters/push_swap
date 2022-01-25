@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.h                                        :+:    :+:            */
+/*   checker.h                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/01/25 14:51:22 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 15:05:04 by iboeters      ########   odam.nl         */
+/*   Created: 2022/01/25 14:31:54 by iboeters      #+#    #+#                 */
+/*   Updated: 2022/01/25 16:58:04 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 # include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
-# include "../checker_files/checker.h"
+# include "../includes/get_next_line.h"
+# include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
+
+typedef struct s_lst
+{
+	void			*content;
+	struct s_lst	*next;
+	struct s_lst	*prev;
+}					t_lst;
 
 int		save_input(int argc, char **argv, t_lst **stack_a);
 void	rotates(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
 void	swaps(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
 void	pushes(char *instruction, t_lst **stack_a, t_lst **stack_b, int print);
-void	reverse_rotate(t_lst **stack, char ab, int print);
-void	rotate(t_lst **stack, char ab, int print);
-void	swap(t_lst **stack, char ab, int print);
-int		change_nums(t_lst *stack_a);
-int		pre_sorting(t_lst **stack_a, t_lst **stack_b, int len);
-void	algo_2(t_lst **stack_a, t_lst **stack_b);
-void	push_num(t_lst **stack_1, t_lst **stack_2, char ab, int print);
-int		sorted(t_lst *stack);
-void	algo_3(t_lst **stack_a, t_lst **stack_b, int len);
-void	check_push(t_lst *stack_a, int *i, int len_tot, float size);
+int		instructions(t_lst *input, t_lst **stack_a, t_lst **stack_b);
+void	lstadd_back(t_lst **lst, t_lst *new);
+void	lstadd_front(t_lst **lst, t_lst *new);
+void	lstclear(t_lst **lst, void (*del)(void*));
+void	lstiter(t_lst *lst, void (*f)(void *));
+t_lst	*lstlast(t_lst *lst);
+t_lst	*lstnew(void *content);
+int		lstsize(t_lst *lst);
+int		save_instructions(t_lst **input);
 
 #endif

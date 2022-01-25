@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:54:13 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 15:16:39 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 17:36:24 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	error_return(void)
 {
@@ -27,7 +27,17 @@ static int	return_value(int error)
 
 int	atoi_ret(const char *str, int i, unsigned int r, int *error)
 {
+	int	j;
+
+	j = 0;
 	if (str[i] != '\0' || ft_strlen(str) == 0)
+	{
+		*error = 1;
+		return (-1);
+	}
+	while (str[j] == ' ' || (str[j] >= 9 && str[j] <= 13))
+		j++;
+	if (str[j] == '\0')
 	{
 		*error = 1;
 		return (-1);

@@ -6,11 +6,11 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:40:37 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 14:41:14 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/25 16:56:38 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 t_lst	*lstnew(void *content)
 {
