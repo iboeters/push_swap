@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:54:17 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 16:56:38 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/26 11:55:52 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	swap(t_lst **stack, char ab, int print)
 	t_lst	*next_2;
 
 	if (print)
-		printf("s%c\n", ab);
+	{
+		write(STDOUT_FILENO, "s", 1);
+		write(STDOUT_FILENO, &ab, 1);
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	prev_1 = (*stack)->prev;
 	prev_2 = *stack;
 	next_1 = (*stack)->next;
@@ -39,7 +43,7 @@ void	swap(t_lst **stack, char ab, int print)
 void	ss(t_lst **stack_a, t_lst **stack_b, int print)
 {
 	if (print)
-		printf("ss\n");
+		write(STDOUT_FILENO, "ss\n", ft_strlen("ss\n"));
 	if (lstsize(*stack_a) >= 2)
 		swap(stack_a, 'a', 0);
 	if (lstsize(*stack_b) >= 2)

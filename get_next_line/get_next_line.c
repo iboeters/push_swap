@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 16:17:46 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 18:28:47 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/26 11:47:34 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	join_and_save(char **line, char **buf)
 	free(end);
 	if (!*line)
 		return (-1);
-	tmp = gnl_substr(*buf, i + 1, gnl_strlen(*buf) - i);
+	tmp = gnl_substr(*buf, i + 1, ft_strlen(*buf) - i);
 	if (!tmp)
 		return (-1);
 	if (*buf)

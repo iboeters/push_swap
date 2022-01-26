@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 11:08:54 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 16:56:38 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/26 10:48:04 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ int	pre_sorting(t_lst **stack_a, t_lst **stack_b, int len)
 		groups = 5;
 	else if (len >= 200 && len < 300)
 		groups = 7;
-	else if (len >= 300)
+	else if (len >= 300 && len < 600)
 		groups = 10;
+	else if (len >= 600)
+		groups = 12;
 	sort_a_bit(stack_a, stack_b, len, groups);
 	return (0);
 }

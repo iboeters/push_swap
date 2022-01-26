@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:54:03 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 16:56:38 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/26 11:55:52 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ void	push(t_lst **stack_1, t_lst **stack_2, char ab, int print)
 	t_lst	*tmp_addr;
 
 	if (print)
-		printf("p%c\n", ab);
+	{
+		write(STDOUT_FILENO, "p", 1);
+		write(STDOUT_FILENO, &ab, 1);
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	last = (*stack_2)->prev;
 	tmp_addr = (*stack_2)->next;
 	lstadd_front(stack_1, *stack_2);

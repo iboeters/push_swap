@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/11 12:53:04 by iboeters      #+#    #+#                 */
-/*   Updated: 2021/05/03 14:36:44 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/26 11:47:34 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "../libft/libft.h"
 
 # define BUFFER_SIZE 32
 
-size_t	gnl_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 char	*gnl_strjoin(char *s1, char *s2);
 int		gnl_strchr(const char *s, int c);
 void	*gnl_calloc(size_t count, size_t size);

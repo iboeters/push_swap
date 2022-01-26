@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:34:45 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 18:23:34 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/26 11:49:32 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	save_instructions(t_lst **input)
 	while (ret >= 1)
 	{
 		ret = get_next_line(STDIN_FILENO, &str);
-		printf("[%s]\n", str);
 		if (ret != 1)
 		{
 			if (str)
@@ -33,8 +32,6 @@ int	save_instructions(t_lst **input)
 	if (ret == -1)
 	{
 		write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
-		if (str)
-			free(str);
 		return (1);
 	}
 	return (0);
