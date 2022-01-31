@@ -37,7 +37,7 @@ INC = -I ./libft/libft.h -I ./includes/get_next_line.h -I ./includes/checker.h
 
 INCB = -I ./libft/libft.h -I ./includes/get_next_line.h -I ./includes/checker.h
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Werror -Wextra
 
 ifdef DEBUG
 FLAGS += -fsanitize=address -fno-omit-frame-pointer -g

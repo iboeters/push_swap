@@ -51,6 +51,7 @@ checkin(){
 		fi
 		gen_arr $ARR_SIZE
 
+
 		./push_swap $ARG | ./checker $ARG
 		echo -ne "${YELLOW}n="
 		./push_swap $ARG | wc -l
@@ -97,6 +98,13 @@ edgecases(){
 	echo -e "${RESET}"
 
 	ARG="   "
+	echo $ARG
+	./push_swap $ARG | ./checker $ARG
+	echo -ne "${YELLOW}n="
+	./push_swap $ARG | wc -l
+	echo -e "${RESET}"
+
+	ARG="4 4 5"
 	echo $ARG
 	./push_swap $ARG | ./checker $ARG
 	echo -ne "${YELLOW}n="

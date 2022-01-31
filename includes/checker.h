@@ -6,7 +6,7 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:31:54 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 16:58:04 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/26 14:38:51 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libft/libft.h"
 # include "../includes/get_next_line.h"
-# include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
 

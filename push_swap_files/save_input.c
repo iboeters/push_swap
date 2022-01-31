@@ -6,26 +6,23 @@
 /*   By: iboeters <iboeters@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 14:54:13 by iboeters      #+#    #+#                 */
-/*   Updated: 2022/01/25 17:36:24 by iboeters      ########   odam.nl         */
+/*   Updated: 2022/01/26 15:14:30 by iboeters      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	error_return(void)
-{
-	write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
-	return (1);
-}
-
 static int	return_value(int error)
 {
 	if (error == 1)
-		return (error_return());
+	{
+		write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
+		return (1);
+	}
 	return (0);
 }
 
-int	atoi_ret(const char *str, int i, unsigned int r, int *error)
+static int	atoi_ret(const char *str, int i, unsigned int r, int *error)
 {
 	int	j;
 
@@ -45,7 +42,7 @@ int	atoi_ret(const char *str, int i, unsigned int r, int *error)
 	return (r);
 }
 
-int	atoi_check(const char *str, int *error)
+static int	atoi_check(const char *str, int *error)
 {
 	unsigned int	r;
 	int				i;
@@ -74,6 +71,25 @@ int	atoi_check(const char *str, int *error)
 	return (sign * atoi_ret(str, i, r, error));
 }
 
+static int	add_back(t_lst **stack_a, int **num, char *argv, int *error)
+{
+	t_lst	*new_list;
+
+	*num = (int *)malloc(sizeof(int) * 1);
+	if (!*num)
+		return (1);
+	**num = atoi_check(argv, error);
+	new_list = lstnew(*num);
+	if (!new_list)
+	{
+		if (*num)
+			free(*num);
+		return (1);
+	}
+	lstadd_back(stack_a, new_list);
+	return (0);
+}
+
 int	save_input(int argc, char **argv, t_lst **stack_a)
 {
 	int		error;
@@ -86,16 +102,15 @@ int	save_input(int argc, char **argv, t_lst **stack_a)
 	i = 1;
 	while (error == 0 && argv[i])
 	{
-		num = (int *)malloc(sizeof(int) * 1);
-		*num = atoi_check(argv[i], &error);
-		lstadd_back(stack_a, lstnew(num));
+		if (add_back(stack_a, &num, argv[i], &error))
+			return (return_value(1));
 		last = lstlast(*stack_a);
 		tmp_addr = last;
 		last = last->prev;
 		while (last != tmp_addr)
 		{
 			if (*(int *)last->content == *num)
-				return (error_return());
+				return (return_value(1));
 			last = last->prev;
 		}
 		i++;
